@@ -1,0 +1,11 @@
+{
+  "LocalizedStrings": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "displayName",
+      "StringId": "DisplayName",
+      "Override": true,
+      "Value": "Nombre"
+    }
+  ]
+}
