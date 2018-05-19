@@ -192,7 +192,7 @@ input::-webkit-input-placeholder {
 
 .attrEntry,
 .entry-item {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   position: relative;
 }
 
@@ -310,8 +310,7 @@ input::-webkit-input-placeholder {
 .entry-item label {
   color: #757575;
   font-size: 0.8em;
-  position: absolute;
-  transform: translateY(-100%);
+  margin-bottom: 0;
 }
 
 .attrEntry .error.itemLevel,
@@ -546,23 +545,13 @@ body {
   margin-bottom: 0;
 }
 
-#api[data-name=Unified] .password-label {
-  height: 0;
-}
-
 #api[data-name=Unified] #createAccount {
   margin-left: .25rem;
 }
 
 #api[data-name=Unified] #forgotPassword {
-  display: flex!important;
-  display: -ms-flexbox!important;
-  -ms-flex-pack: end!important;
-  display: -webkit-box!important;
-  -webkit-box-pack: end!important;
+  float: right;
   font-size: .8rem;
-  justify-content: flex-end!important;
-  transform: translateY(-100%);
 }
 
 #api[data-name=Unified] #GoogleAccountOAuth2Exchange,
@@ -642,17 +631,6 @@ body {
 #api[data-name=SelfAsserted] #email_ver_input,
 #api[data-name=SelfAsserted] #email_ver_input_label {
   margin-top: 2rem;
-}
-
-/* LOCAL ACCOUNT PASSWORD PAGE */
-
-.local-account-password-container .attrEntry {
-  margin-top: 1.5rem;
-}
-
-.local-account-password-container #api[data-name=SelfAsserted] #attributeList > ul > li > div > label,
-.local-account-password-container #api[data-name=SelfAsserted] #email {
-  margin-top: 2.5rem;
 }
 
 /* LOCAL ACCOUNT REGISTRATION PAGE */
