@@ -1,0 +1,57 @@
+﻿@using WoodGroveAdministrationWebApplication.Extensions
+@model WoodGroveAdministrationWebApplication.ViewModels.UserIndexViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Users";
+}
+<div class="animated card fadeIn mb-4 wow" style="animation-name: fadeIn; visibility: visible;">
+    <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">Business customers</h4>
+    </div>
+</div>
+<div class="animated fadeIn row wow" style="animation-name: fadeIn; visibility: visible;">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="wg-black white-text">
+                        <tr>
+                            <th>Name</th>
+                            <th>Job title</th>
+                            <th>Organization name</th>
+                            <th>Role</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <th scope="row">@user.DisplayName</th>
+                                <td>@user.JobTitle</td>
+                                <td>@user.OrganizationDisplayName</td>
+                                <td>@user.BusinessCustomerRole</td>
+                                <td>
+                                    @if (user.IsInBusinessCustomerStockerRole())
+                                    {
+                                        <form asp-controller="User" asp-action="PromoteToManager" method="post">
+                                            <input name="Id" type="hidden" value="@user.ObjectId" />
+                                            <button class="btn btn-wg-green btn-rounded btn-sm waves-effect waves-light" title="" type="submit" data-original-title="Promote to manager" data-placement="top" data-toggle="tooltip">+</button>
+                                        </form>
+                                    }
+                                    @if (user.IsInBusinessCustomerManagerRole())
+                                    {
+                                        <form asp-controller="User" asp-action="DemoteToStocker" method="post">
+                                            <input name="Id" type="hidden" value="@user.ObjectId" />
+                                            <button class="btn btn-wg-green btn-rounded btn-sm waves-effect waves-light" title="" type="submit" data-original-title="Demote to stocker" data-placement="top" data-toggle="tooltip">-</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

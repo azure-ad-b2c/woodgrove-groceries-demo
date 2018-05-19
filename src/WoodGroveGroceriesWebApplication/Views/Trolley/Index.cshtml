@@ -1,0 +1,53 @@
+﻿@model WoodGroveGroceriesWebApplication.ViewModels.TrolleyIndexViewModel
+@{
+    ViewBag.Title = "Trolley";
+}
+<main class="mt-3 pt-3">
+    <section class="section mb-5 pb-5">
+        <div class="table-responsive">
+            <table class="table trolley-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="font-weight-bold">
+                            <strong>Product</strong>
+                        </th>
+                        <th class="font-weight-bold">
+                            <strong>Quantity</strong>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Trolley.Items)
+                    {
+                        <tr>
+                            <th scope="row">
+                                <img alt="" class="img-fluid z-depth-0" src="@item.ProductPictureUrl">
+                            </th>
+                            <td>
+                                <h5 class="mt-3">
+                                    <strong>@item.ProductName</strong>
+                                </h5>
+                            </td>
+                            <td class="text-center text-md-left">
+                                <span class="qty">@item.Quantity</span>
+                            </td>
+                            <td>
+                                <form asp-controller="Trolley" asp-action="RemoveFromTrolley" method="post">
+                                    <input name="Id" type="hidden" value="@item.Id" />
+                                    <button class="btn btn-wg-green btn-rounded btn-sm waves-effect waves-light" title="" type="submit" data-original-title="Remove item" data-placement="top" data-toggle="tooltip">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <a class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" asp-controller="@Model.AspController" asp-action="Index">Continue shopping</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

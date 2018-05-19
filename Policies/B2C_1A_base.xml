@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="woodgroveb2c.onmicrosoft.com"
+  PolicyId="B2C_1A_base"
+  PublicPolicyUri="http://woodgroveb2c.onmicrosoft.com"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BuildingBlocks>
+    <ClaimsSchema>
+      <ClaimType Id="alternativeSecurityId">
+        <DisplayName>Alternative Security ID</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="authenticationSource">
+        <DisplayName>Authentication Source</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="clientId">
+        <DisplayName>Client Identifier</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="clientIpAddress">
+        <DisplayName>Client IP Address</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="correlationId">
+        <DisplayName>Correlation Id</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="culture">
+        <DisplayName>Culture</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="displayName">
+        <DisplayName>Display Name</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="name" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="name" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" />
+        </DefaultPartnerClaimTypes>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="email">
+        <DisplayName>Email Address</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>TextBox</UserInputType>
+        <Restriction>
+          <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Enter a valid email address." />
+        </Restriction>
+      </ClaimType>
+      <ClaimType Id="eventName">
+        <DisplayName>Event Name</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="identityProvider">
+        <DisplayName>Identity Provider</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="idp" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="idp" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/identityprovider" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="jobTitle">
+        <DisplayName>Job Title</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="job_title" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="job_title" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/jobtitle" />
+        </DefaultPartnerClaimTypes>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="loginHint">
+        <DisplayName>Login Hint</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="mailNickname">
+        <DisplayName>Mail Nickname</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="newPassword">
+        <DisplayName>New Password</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>Password</UserInputType>
+        <Restriction>
+          <Pattern RegularExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" HelpText="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." />
+        </Restriction>
+      </ClaimType>
+      <ClaimType Id="newUser">
+        <DisplayName>New User</DisplayName>
+        <DataType>boolean</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="new_user" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="new_user" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/newuser" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="objectId">
+        <DisplayName>Object Identifier</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="oid" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="oid" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/objectidentifier" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="otherMails">
+        <DisplayName>Alternate Email Addresses</DisplayName>
+        <DataType>stringCollection</DataType>
+      </ClaimType>
+      <ClaimType Id="password">
+        <DisplayName>Password</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>Password</UserInputType>
+      </ClaimType>
+      <ClaimType Id="passwordPolicies">
+        <DisplayName>Password Policies</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="policyId">
+        <DisplayName>Policy Identifier</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="reenterPassword">
+        <DisplayName>Confirm New Password</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>Password</UserInputType>
+        <Restriction>
+          <Pattern RegularExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" HelpText=" " />
+        </Restriction>
+      </ClaimType>
+      <ClaimType Id="refreshTokenIssuedOnDateTime">
+        <DisplayName>Refresh Token Issued On Date Time</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="refreshTokensValidFromDateTime">
+        <DisplayName>Refresh Token Valid From Date Time</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="signInName">
+        <DisplayName>Sign-in name</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="tenantId">
+        <DisplayName>Tenant Identifier</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="tid" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="tid" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/tenantidentifier" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="trustFrameworkPolicy">
+        <DisplayName>Trust Framework Policy</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="tfp" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="tfp" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.vicroads.vic.gov.au/identity/claims/trustframeworkpolicy" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="userId">
+        <DisplayName>User ID</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="userName">
+        <DisplayName>User Name</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="userPrincipalName">
+        <DisplayName>User Principal Name</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="upn" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="upn" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="grantType">
+        <DisplayName>Grant Type</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="hasAzureActiveDirectorySSOSession">
+        <DisplayName>Has Azure Active Directory Session</DisplayName>
+        <DataType>boolean</DataType>
+      </ClaimType>
+      <ClaimType Id="nca">
+        <DisplayName>NCA</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="scope">
+        <DisplayName>Scope</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="termsOfServiceConsentRequired">
+        <DisplayName>Terms of Service Consent Required</DisplayName>
+        <DataType>boolean</DataType>
+      </ClaimType>
+      <ClaimType Id="extension_AgreedToTermsOfService">
+        <DisplayName>Agreed To Terms Of Service</DisplayName>
+        <DataType>string</DataType>
+        <UserInputType>CheckboxMultiSelect</UserInputType>
+        <Restriction>
+          <Enumeration Text="I agree to the WoodGrove terms of service" Value="True" />
+        </Restriction>
+      </ClaimType>
+      <ClaimType Id="extension_BusinessCustomerRole">
+        <DisplayName>Business Customer Role</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="business_customer_role" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="business_customer_role" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/businesscustomerrole" />
+        </DefaultPartnerClaimTypes>
+      </ClaimType>
+      <ClaimType Id="extension_CustomerType">
+        <DisplayName>Customer Type</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="extension_OrganizationDisplayName">
+        <DisplayName>Organization Display Name</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="organization_name" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="organization_name" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/organizationname" />
+        </DefaultPartnerClaimTypes>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="extension_TermsOfServiceConsentDateTime">
+        <DisplayName>Terms of Service Consent Date Time</DisplayName>
+        <DataType>dateTime</DataType>
+      </ClaimType>
+    </ClaimsSchema>
+    <ClaimsTransformations>
+      <ClaimsTransformation Id="AssertRefreshTokenIssuedOnDateTimeIsLaterThanRefreshTokensValidFromDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
+          <InputClaim ClaimTypeReferenceId="refreshTokensValidFromDateTime" TransformationClaimType="rightOperand" />
+        </InputClaims>
+        <InputParameters>
+          <InputParameter Id="AssertIfEqualTo" DataType="boolean" Value="false" />
+          <InputParameter Id="AssertIfRightOperandIsNotPresent" DataType="boolean" Value="true" />
+        </InputParameters>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="userId" TransformationClaimType="key" />
+          <InputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="identityProvider" />
+        </InputClaims>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="alternativeSecurityId" TransformationClaimType="alternativeSecurityId" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="CreateExternalUserName" TransformationMethod="CreateRandomString">
+        <InputParameters>
+          <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
+        </InputParameters>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="userName" TransformationClaimType="outputClaim" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="CreateExternalUserPrincipalName" TransformationMethod="FormatStringClaim">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="userName" TransformationClaimType="inputClaim" />
+        </InputClaims>
+        <InputParameters>
+          <InputParameter Id="stringFormat" DataType="string" Value="{0}@{RelyingPartyTenantId}" />
+        </InputParameters>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="userPrincipalName" TransformationClaimType="outputClaim" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="CreateMicrosoftWorkIdentityProvider" TransformationMethod="FormatStringClaim">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="tenantId" TransformationClaimType="inputClaim" />
+        </InputClaims>
+        <InputParameters>
+          <InputParameter Id="stringFormat" DataType="string" Value="https://sts.windows.net/{0}/" />
+        </InputParameters>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="outputClaim" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
+          <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
+        </InputClaims>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="GetTermsOfServiceConsentDateTime" TransformationMethod="GetCurrentDateTime">
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" TransformationClaimType="currentDateTime" />
+        </OutputClaims>
+      </ClaimsTransformation>
+      <ClaimsTransformation Id="IsTermsOfServiceConsentRequired" TransformationMethod="IsTermsOfUseConsentRequired">
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
+        </InputClaims>
+        <InputParameters>
+          <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2018-04-01T00:00:00" />
+        </InputParameters>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="termsOfServiceConsentRequired" TransformationClaimType="result" />
+        </OutputClaims>
+      </ClaimsTransformation>
+    </ClaimsTransformations>
+    <ClientDefinitions>
+      <ClientDefinition Id="DefaultWeb">
+        <ClientUIFilterFlags>LineMarkers, MetaRefresh</ClientUIFilterFlags>
+      </ClientDefinition>
+    </ClientDefinitions>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.account.profile">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Account Profile</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.account.termsofservice">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Account Terms of Service</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.enterpriseaccount.registration">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Work Account Registration</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.error">
+        <LoadUri>~/tenant/default/exception.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Error</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.idpselection">
+        <LoadUri>~/tenant/default/idpselector.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Account Selection</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccount.login">
+        <LoadUri>~/tenant/default/selfasserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Local Account Login</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccount.password">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Local Account Password</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccount.registration">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Local Account Registration</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.socialaccount.registration">
+        <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Personal Account Registration</Item>
+        </Metadata>
+      </ContentDefinition>
+      <ContentDefinition Id="api.unified">
+        <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Account Login or Registration</Item>
+        </Metadata>
+      </ContentDefinition>
+    </ContentDefinitions>
+  </BuildingBlocks>
+  <ClaimsProviders>
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory Store</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-Common">
+          <DisplayName>Azure Active Directory Store</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <IncludeInSso>false</IncludeInSso>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId">
+          <Metadata>
+            <Item Key="Operation">Read</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="alternativeSecurityId" Required="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ContinueIfNotExists">
+          <Metadata>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
+          </Metadata>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByEmail-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="Operation">Read</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+            <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="Operation">Read</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+            <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">User does not exist. You must sign up before you can sign in.</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="jobTitle" />
+            <OutputClaim ClaimTypeReferenceId="otherMails" />
+            <OutputClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" />
+            <OutputClaim ClaimTypeReferenceId="extension_CustomerType" />
+            <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+            <OutputClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="IsTermsOfServiceConsentRequired" />
+          </OutputClaimsTransformations>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists-AssertIfRefreshTokenNotValid">
+          <Metadata>
+            <Item Key="Operation">Read</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="jobTitle" />
+            <OutputClaim ClaimTypeReferenceId="otherMails" />
+            <OutputClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" />
+            <OutputClaim ClaimTypeReferenceId="extension_CustomerType" />
+            <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+            <OutputClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+            <OutputClaim ClaimTypeReferenceId="refreshTokensValidFromDateTime" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="AssertRefreshTokenIssuedOnDateTimeIsLaterThanRefreshTokensValidFromDateTime" />
+          </OutputClaimsTransformations>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteEnterpriseUserByAlternativeSecurityId-ThrowIfExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+            <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered. Select the back button and sign in.</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaimsTransformations>
+            <InputClaimsTransformation ReferenceId="GetTermsOfServiceConsentDateTime" />
+          </InputClaimsTransformations>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="alternativeSecurityId" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="alternativeSecurityId" />
+            <PersistedClaim ClaimTypeReferenceId="displayName" />
+            <PersistedClaim ClaimTypeReferenceId="jobTitle" />
+            <PersistedClaim ClaimTypeReferenceId="mailNickname" DefaultValue="Unknown" />
+            <PersistedClaim ClaimTypeReferenceId="userPrincipalName" />
+            <PersistedClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" DefaultValue="Stocker" />
+            <PersistedClaim ClaimTypeReferenceId="extension_CustomerType" DefaultValue="Work" />
+            <PersistedClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+            <PersistedClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+          </PersistedClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" />
+            <OutputClaim ClaimTypeReferenceId="extension_CustomerType" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteLocalUserByEmail-ThrowIfExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+            <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered. Select the back button and sign in.</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaimsTransformations>
+            <InputClaimsTransformation ReferenceId="CreateOtherMailsFromEmail" />
+            <InputClaimsTransformation ReferenceId="GetTermsOfServiceConsentDateTime" />
+          </InputClaimsTransformations>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="displayName" />
+            <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+            <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+            <PersistedClaim ClaimTypeReferenceId="otherMails" />
+            <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+            <PersistedClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+          </PersistedClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteLocalUserPasswordByObjectId-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="objectId" />
+            <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+          </PersistedClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteSocialUserByAlternativeSecurityId-ThrowIfExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+            <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered. Select the back button and sign in.</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaimsTransformations>
+            <InputClaimsTransformation ReferenceId="CreateOtherMailsFromEmail" />
+            <InputClaimsTransformation ReferenceId="GetTermsOfServiceConsentDateTime" />
+          </InputClaimsTransformations>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="alternativeSecurityId" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="alternativeSecurityId" />
+            <PersistedClaim ClaimTypeReferenceId="displayName" />
+            <PersistedClaim ClaimTypeReferenceId="mailNickname" DefaultValue="Unknown" />
+            <PersistedClaim ClaimTypeReferenceId="otherMails" />
+            <PersistedClaim ClaimTypeReferenceId="userPrincipalName" />
+            <PersistedClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+          </PersistedClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteUserConsentByObjectId-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaimsTransformations>
+            <InputClaimsTransformation ReferenceId="GetTermsOfServiceConsentDateTime" />
+          </InputClaimsTransformations>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="objectId" />
+            <PersistedClaim ClaimTypeReferenceId="extension_TermsOfServiceConsentDateTime" />
+          </PersistedClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteUserProfileByObjectId-ThrowIfNotExists">
+          <Metadata>
+            <Item Key="Operation">Write</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+          </InputClaims>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="objectId" />
+            <PersistedClaim ClaimTypeReferenceId="displayName" />
+            <PersistedClaim ClaimTypeReferenceId="jobTitle" />
+            <PersistedClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+          </PersistedClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Azure Application Insights</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="AzureApplicationInsights-Common">
+          <DisplayName>Azure Application Insights</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="DeveloperMode">false</Item>
+            <Item Key="DisableTelemetry ">false</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="clientId" PartnerClaimType="{property:ClientId}" DefaultValue="{OIDC:ClientId}" />
+            <InputClaim ClaimTypeReferenceId="clientIpAddress" PartnerClaimType="{property:ClientIpAddress}" />
+            <InputClaim ClaimTypeReferenceId="correlationId" PartnerClaimType="{property:CorrelationId}" />
+            <InputClaim ClaimTypeReferenceId="culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
+            <InputClaim ClaimTypeReferenceId="policyId" PartnerClaimType="{property:PolicyId}" DefaultValue="{Policy:PolicyId}" />
+          </InputClaims>
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureApplicationInsights-AuthenticationStarted">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="eventName" DefaultValue="AuthenticationStarted" />
+          </InputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureApplicationInsights-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureApplicationInsights-AuthenticationCompleted">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="eventName" DefaultValue="AuthenticationCompleted" />
+            <InputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="{property:IdentityProvider}" />
+            <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="{property:ObjectId}" />
+          </InputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureApplicationInsights-Common" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AzureApplicationInsights-NewUserCreated">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="eventName" DefaultValue="NewUserCreated" />
+            <InputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="{property:IdentityProvider}" />
+            <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="{property:ObjectId}" />
+          </InputClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureApplicationInsights-Common" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <Domain>google.com</Domain>
+      <DisplayName>Google Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="GoogleAccount-OAuth2">
+          <DisplayName>Google Account</DisplayName>
+          <Protocol Name="OAuth2" />
+          <Metadata>
+            <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
+            <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
+            <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="ProviderName">google.com</Item>
+            <Item Key="scope">profile email</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleClientSecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialAccountAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
+            <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="id" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserPrincipalName" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-ExternalLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LocalAccount-OpenIdConnect">
+          <DisplayName>Local Account OpenID Connect</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
+            <Item Key="ProviderName">https://sts.windows.net/</Item>
+            <Item Key="response_mode">query</Item>
+            <Item Key="response_types">id_token</Item>
+            <Item Key="scope">openid email</Item>
+            <Item Key="UsePolicyInRedirectUri">False</Item>
+            <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
+            <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
+            <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="grantType" PartnerClaimType="grant_type" DefaultValue="password" />
+            <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
+            <InputClaim ClaimTypeReferenceId="password" Required="true" />
+            <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
+            <InputClaim ClaimTypeReferenceId="nca" DefaultValue="1" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="local" />
+            <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
+          </OutputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <Domain>live.com</Domain>
+      <DisplayName>Microsoft Personal Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="MicrosoftPersonalAccount-OpenIdConnect">
+          <DisplayName>Microsoft Personal Account</DisplayName>
+          <Protocol Name="OpenIdConnect"/>
+          <OutputTokenFormat>JWT</OutputTokenFormat>
+          <Metadata>
+            <Item Key="METADATA">https://login.windows.net/consumers/v2.0/.well-known/openid-configuration</Item>
+            <Item Key="ProviderName">https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0</Item>
+            <Item Key="response_types">id_token</Item>
+            <Item Key="scope">openid profile email</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_MicrosoftClientSecret"/>
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="loginHint" PartnerClaimType="login_hint" DefaultValue="{OIDC:LoginHint}" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialAccountAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="preferred_username" />
+            <OutputClaim ClaimTypeReferenceId="identityprovider" DefaultValue="live.com" />
+            <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="oid" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserPrincipalName" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-ExternalLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <Domain>organizations.onmicrosoft.com</Domain>
+      <DisplayName>Microsoft Work Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="MicrosoftWorkAccount-OpenIdConnect">
+          <DisplayName>Microsoft Work Account</DisplayName>
+          <Protocol Name="OAuth2"/>
+          <OutputTokenFormat>JWT</OutputTokenFormat>
+          <Metadata>
+            <Item Key="authorization_endpoint">https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="AccessTokenEndpoint">https://login.microsoftonline.com/organizations/oauth2/v2.0/token</Item>
+            <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
+            <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="scope">openid https://graph.microsoft.com/user.read</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
+            <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_MicrosoftClientSecret"/>
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="loginHint" PartnerClaimType="login_hint" DefaultValue="{OIDC:LoginHint}" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="enterpriseAccountAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="userDisplayName" />
+            <OutputClaim ClaimTypeReferenceId="jobTitle" PartnerClaimType="userJobTitle" />
+            <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="organizationId" />
+            <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="userId" />
+            <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" PartnerClaimType="organizationDisplayName" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateMicrosoftWorkIdentityProvider" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateExternalUserPrincipalName" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-ExternalLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Self Asserted</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-Account-TermsOfServiceConsent">
+          <DisplayName>Account Terms of Service</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.account.termsofservice</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Update</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="extension_AgreedToTermsOfService" Required="true" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteUserConsentByObjectId-ThrowIfNotExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-EnterpriseAccount-Registration">
+          <DisplayName>Local Account Registration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.enterpriseaccount.registration</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Create</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="displayName" />
+            <InputClaim ClaimTypeReferenceId="jobTitle" />
+            <InputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="jobTitle" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="extension_AgreedToTermsOfService" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="newUser" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" />
+            <OutputClaim ClaimTypeReferenceId="extension_CustomerType" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteEnterpriseUserByAlternativeSecurityId-ThrowIfExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-LocalAccount-Login">
+          <DisplayName>Local Account</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.localaccount.login</Item>
+            <Item Key="setting.operatingMode">Email</Item>
+            <Item Key="SignUpTarget">SelfAssertedLocalAccountRegistrationExchange</Item>
+          </Metadata>
+          <IncludeInSso>false</IncludeInSso>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="signInName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="password" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="LocalAccount-OpenIdConnect" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-LocalAccount-PasswordRecovery">
+          <DisplayName>Local Account Password Recovery</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.localaccount.password</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <IncludeInSso>false</IncludeInSso>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-ReadUserByEmail-ThrowIfNotExists" />
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-LocalAccount-PasswordReset">
+          <DisplayName>Local Account Password Reset</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.localaccount.password</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteLocalUserPasswordByObjectId-ThrowIfNotExists" />
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-LocalAccount-Registration">
+          <DisplayName>Local Account Registration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.localaccount.registration</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Create</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="displayName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="extension_AgreedToTermsOfService" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="local" />
+            <OutputClaim ClaimTypeReferenceId="newUser" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteLocalUserByEmail-ThrowIfExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-PersonalAccount-ProfileUpdate">
+          <DisplayName>Local Account Registration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.account.profile</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Update</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" />
+            <InputClaim ClaimTypeReferenceId="displayName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" Required="true" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteUserProfileByObjectId-ThrowIfNotExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-SocialAccount-Registration">
+          <DisplayName>Local Account Registration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.socialaccount.registration</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Create</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="displayName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="extension_AgreedToTermsOfService" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="newUser" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteSocialUserByAlternativeSecurityId-ThrowIfExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-AzureActiveDirectory" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-WorkAccount-ProfileUpdate">
+          <DisplayName>Local Account Registration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.account.profile</Item>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="language.button_continue">Update</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="objectId" />
+            <InputClaim ClaimTypeReferenceId="displayName" />
+            <InputClaim ClaimTypeReferenceId="jobTitle" />
+            <InputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="displayName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="jobTitle" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" Required="true" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="AzureActiveDirectoryStore-WriteUserProfileByObjectId-ThrowIfNotExists" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SSOSession-Noop" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SSOSession-AzureActiveDirectory">
+          <DisplayName>Azure Active Directory Session Management</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="authenticationSource" />
+            <PersistedClaim ClaimTypeReferenceId="objectId" />
+            <PersistedClaim ClaimTypeReferenceId="identityProvider" />
+          </PersistedClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="hasAzureActiveDirectorySSOSession" DefaultValue="true" />
+          </OutputClaims>
+        </TechnicalProfile>
+        <TechnicalProfile Id="SSOSession-ExternalLogin">
+          <DisplayName>External Login Session Mananagement</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
+          </Metadata>
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="alternativeSecurityId" />
+          </PersistedClaims>
+        </TechnicalProfile>
+        <TechnicalProfile Id="SSOSession-Noop">
+          <DisplayName>Noop Session Management</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="JwtIssuer">
+          <DisplayName>JSON Web Token Issuer</DisplayName>
+          <Protocol Name="None" />
+          <OutputTokenFormat>JWT</OutputTokenFormat>
+          <Metadata>
+            <Item Key="client_id">{service:te}</Item>
+            <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+            <Item Key="AuthenticationContextReferenceClaimPattern">None</Item>
+            <Item Key="IssuanceClaimPattern">AuthorityAndTenantGuid</Item>
+            <Item Key="RefreshTokenUserJourneyId">TokenRefresh</Item>
+            <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+          </CryptographicKeys>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Trust Framework Policy Engine</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="TpEngine_c3bd4fe2-1775-4013-b91d-35f16d377d13">
+          <DisplayName>Default Trust Framework Policy Engine</DisplayName>
+          <Protocol Name="None" />
+          <Metadata>
+            <Item Key="url">{service:te}</Item>
+          </Metadata>
+        </TechnicalProfile>
+        <TechnicalProfile Id="TpEngine_RefreshToken">
+          <DisplayName>Trust Framework Policy Engine Token Refresh</DisplayName>
+          <Protocol Name="None" />
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" />
+          </OutputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>User Journey Context Provider</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="UserJourneyContext">
+          <DisplayName>User Journey Context</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="correlationId" PartnerClaimType="CorrelationId" />
+            <OutputClaim ClaimTypeReferenceId="clientIpAddress" PartnerClaimType="IP-Address" />
+          </OutputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+  <UserJourneys>
+    <UserJourney Id="PasswordReset">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationStartedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationStarted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedLocalAccountPasswordRecoveryExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccount-PasswordRecovery" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedLocalAccountPasswordResetExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccount-PasswordReset" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByObjectIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="6" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="7" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationCompletedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationCompleted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+    <UserJourney Id="ProfileUpdateWithPersonalAccount">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationStartedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationStarted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselection">
+          <ClaimsProviderSelections>
+            <ClaimsProviderSelection TargetClaimsExchangeId="GoogleAccountOAuth2Exchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftPersonalAccountOpenIdConnectExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="SelfAssertedLocalAccountLoginExchange" />
+          </ClaimsProviderSelections>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="GoogleAccountOAuth2Exchange" TechnicalProfileReferenceId="GoogleAccount-OAuth2" />
+            <ClaimsExchange Id="MicrosoftPersonalAccountOpenIdConnectExchange" TechnicalProfileReferenceId="MicrosoftPersonalAccount-OpenIdConnect" />
+            <ClaimsExchange Id="SelfAssertedLocalAccountLoginExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccount-Login" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+              <Value>authenticationSource</Value>
+              <Value>localAccountAuthentication</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryDirectoryReadUserByAlternativeSecurityIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryDirectoryReadUserByObjectIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="7" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedPersonalAccountProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-PersonalAccount-ProfileUpdate" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="8" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationCompletedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationCompleted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+    <UserJourney Id="ProfileUpdateWithWorkAccount">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationStartedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationStarted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="MicrosoftWorkAccountOpenIdConnectExchange" TechnicalProfileReferenceId="MicrosoftWorkAccount-OpenIdConnect" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryDirectoryReadUserByAlternativeSecurityIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryDirectoryReadUserByObjectIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedWorkAccountProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-WorkAccount-ProfileUpdate" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="8" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationCompletedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationCompleted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+    <UserJourney Id="SignUpOrSignInWithPersonalAccount">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationStartedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationStarted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.unified">
+          <ClaimsProviderSelections>
+            <ClaimsProviderSelection TargetClaimsExchangeId="GoogleAccountOAuth2Exchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftPersonalAccountOpenIdConnectExchange" />
+            <ClaimsProviderSelection ValidationClaimsExchangeId="SelfAssertedLocalAccountLoginExchange" />
+          </ClaimsProviderSelections>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedLocalAccountLoginExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccount-Login" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>objectId</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="GoogleAccountOAuth2Exchange" TechnicalProfileReferenceId="GoogleAccount-OAuth2" />
+            <ClaimsExchange Id="MicrosoftPersonalAccountOpenIdConnectExchange" TechnicalProfileReferenceId="MicrosoftPersonalAccount-OpenIdConnect" />
+            <ClaimsExchange Id="SelfAssertedLocalAccountRegistrationExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccount-Registration" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+              <Value>authenticationSource</Value>
+              <Value>localAccountAuthentication</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByAlternativeSecurityIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ContinueIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+              <Value>authenticationSource</Value>
+              <Value>localAccountAuthentication</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>objectId</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedSocialAccountRegistrationExchange" TechnicalProfileReferenceId="SelfAsserted-SocialAccount-Registration" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="7" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByObjectIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="8" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>newUser</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+              <Value>termsOfServiceConsentRequired</Value>
+              <Value>False</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedEnterpriseAccountTermsOfServiceConsentExchange" TechnicalProfileReferenceId="SelfAsserted-Account-TermsOfServiceConsent" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="9" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+              <Value>newUser</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsNewUserCreatedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-NewUserCreated" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="11" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationCompletedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationCompleted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+    <UserJourney Id="SignUpOrSignInWithWorkAccount">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationStartedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationStarted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="MicrosoftWorkAccountOpenIdConnectExchange" TechnicalProfileReferenceId="MicrosoftWorkAccount-OpenIdConnect" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByAlternativeSecurityIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByAlternativeSecurityId-ContinueIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>objectId</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedEnterpriseAccountRegistrationExchange" TechnicalProfileReferenceId="SelfAsserted-EnterpriseAccount-Registration" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByObjectIdExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="7" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>newUser</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+              <Value>termsOfServiceConsentRequired</Value>
+              <Value>False</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAssertedEnterpriseAccountTermsOfServiceConsentExchange" TechnicalProfileReferenceId="SelfAsserted-Account-TermsOfServiceConsent" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="8" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+              <Value>newUser</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsNewUserCreatedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-NewUserCreated" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="10" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureApplicationInsightsAuthenticationCompletedExchange" TechnicalProfileReferenceId="AzureApplicationInsights-AuthenticationCompleted" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+    <UserJourney Id="TokenRefresh">
+      <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="UserJourneyContextExchange" TechnicalProfileReferenceId="UserJourneyContext" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="TpEngineRefreshTokenExchange" TechnicalProfileReferenceId="TpEngine_RefreshToken" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AzureActiveDirectoryStoreReadUserByObjectIdThrowIfNotExistsAssertIfRefreshTokenNotValidExchange" TechnicalProfileReferenceId="AzureActiveDirectoryStore-ReadUserByObjectId-ThrowIfNotExists-AssertIfRefreshTokenNotValid" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+      </OrchestrationSteps>
+    </UserJourney>
+  </UserJourneys>
+</TrustFrameworkPolicy>
