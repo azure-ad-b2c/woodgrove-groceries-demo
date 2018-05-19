@@ -22,7 +22,7 @@ namespace WoodGroveGroceriesWebApplication.Controllers
                         {Constants.AuthenticationProperties.Policy, policy}
                     })
                 {
-                    RedirectUri = "/"
+                    RedirectUri = Url.Action("LoggedIn", "Account", values: null, protocol: Request.Scheme)
                 });
         }
 
@@ -100,7 +100,7 @@ namespace WoodGroveGroceriesWebApplication.Controllers
                         {Constants.AuthenticationProperties.UILocales, uiLocale}
                     })
                 {
-                    RedirectUri = "/"
+                    RedirectUri = Url.Action("LoggedIn", "Account", values: null, protocol: Request.Scheme)
                 });
         }
 
