@@ -1,0 +1,48 @@
+﻿@model WoodGroveGroceriesWebApplication.ViewModels.PantryIndexViewModel
+@{
+    ViewBag.Title = "Pantry";
+}
+<main class="mt-3 pt-3">
+    <nav class="mb-5 navbar navbar-dark navbar-expand-lg wg-black">
+        <a class="font-weight-bold mr-4 white-text" href="#">Pantry</a>
+        <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent1" data-toggle="collapse" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent1" class="collapse navbar-collapse">
+            <ul class="mr-auto navbar-nav"></ul>
+            <form class="search-form" role="search">
+                <div class="form-group md-form my-0 waves-effect waves-light">
+                    <input class="form-control" placeholder="Search" type="text">
+                </div>
+            </form>
+        </div>
+    </nav>
+    <section class="pt-4 section">
+        <div class="row">
+            @foreach (var item in Model.Pantry.Items)
+            {
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <form asp-area="@Model.FormAspArea" asp-controller="@Model.FormAspController" asp-action="@Model.FormAspAction" method="post">
+                        <input name="Id" type="hidden" value="@item.Id" />
+                        <input name="CatalogItemId" type="hidden" value="@item.CatalogItemId" />
+                        <div class="card card-ecommerce">
+                            <div class="overlay view">
+                                <img alt="" class="img-fluid" src="@item.ProductPictureUrl">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">
+                                    <strong>@item.ProductName</strong>
+                                </h5>
+                                <div class="card-footer pb-0">
+                                    <div class="mb-0 row">
+                                        <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit"><i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </section>
+</main>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="woodgroveb2c.onmicrosoft.com"
+  PolicyId="B2C_1A_ext"
+  PublicPolicyUri="http://woodgroveb2c.onmicrosoft.com"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BasePolicy>
+    <TenantId>woodgroveb2c.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_base</PolicyId>
+  </BasePolicy>
+  <BuildingBlocks>
+    <ClaimsSchema>
+      <ClaimType Id="resource">
+        <DisplayName>Resource</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+    </ClaimsSchema>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.account.profile">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/account_profile.html</LoadUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" Url="https://bing.com" LocalizedResourcesReferenceId="api.account.profile.en" />
+          <LocalizedResourcesReference Language="es" Url="https://bing.com" LocalizedResourcesReferenceId="api.account.profile.es" />
+          <LocalizedResourcesReference Language="fr" Url="https://bing.com" LocalizedResourcesReferenceId="api.account.profile.fr" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.account.termsofservice">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/account_terms_of_service.html</LoadUri>
+      </ContentDefinition>
+      <ContentDefinition Id="api.enterpriseaccount.registration">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/enterprise_account_registration.html</LoadUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" Url="https://bing.com" LocalizedResourcesReferenceId="api.enterpriseaccount.registration.en" />
+          <LocalizedResourcesReference Language="es" Url="https://bing.com" LocalizedResourcesReferenceId="api.enterpriseaccount.registration.es" />
+          <LocalizedResourcesReference Language="fr" Url="https://bing.com" LocalizedResourcesReferenceId="api.enterpriseaccount.registration.fr" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccount.password">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/local_account_password.html</LoadUri>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccount.registration">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/local_account_registration.html</LoadUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" Url="https://bing.com" LocalizedResourcesReferenceId="api.localaccount.registration.en" />
+          <LocalizedResourcesReference Language="es" Url="https://bing.com" LocalizedResourcesReferenceId="api.localaccount.registration.es" />
+          <LocalizedResourcesReference Language="fr" Url="https://bing.com" LocalizedResourcesReferenceId="api.localaccount.registration.fr" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.socialaccount.registration">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/social_account_registration.html</LoadUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" Url="https://bing.com" LocalizedResourcesReferenceId="api.socialaccount.registration.en" />
+          <LocalizedResourcesReference Language="es" Url="https://bing.com" LocalizedResourcesReferenceId="api.socialaccount.registration.es" />
+          <LocalizedResourcesReference Language="fr" Url="https://bing.com" LocalizedResourcesReferenceId="api.socialaccount.registration.fr" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.unified">
+        <LoadUri>https://woodgroveb2ctmpls.blob.core.windows.net/default/unified.html</LoadUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" Url="https://bing.com" LocalizedResourcesReferenceId="api.unified.en" />
+          <LocalizedResourcesReference Language="es" Url="https://bing.com" LocalizedResourcesReferenceId="api.unified.es" />
+          <LocalizedResourcesReference Language="fr" Url="https://bing.com" LocalizedResourcesReferenceId="api.unified.fr" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+    </ContentDefinitions>
+    <Localization Enabled="true">
+      <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
+        <SupportedLanguage>en</SupportedLanguage>
+        <SupportedLanguage>es</SupportedLanguage>
+        <SupportedLanguage>fr</SupportedLanguage>
+      </SupportedLanguages>
+      <LocalizedResources Culture="en">
+        <LocalizedCollections>
+          <LocalizedCollection ElementType="ClaimType" ElementId="extension_AgreedToTermsOfService" TargetCollection="Restriction">
+            <Item Text="I agree to the WoodGrove terms of service" Value="True" />
+          </LocalizedCollection>
+        </LocalizedCollections>
+      </LocalizedResources>
+      <LocalizedResources Id="api.account.profile.en">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Name</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Organization Name</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.enterpriseaccount.registration.en">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Name</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Organization Name</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.localaccount.registration.en">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Name</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.socialaccount.registration.en">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Name</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.unified.en">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimsProvider" StringId="SelfAssertedLocalAccountLoginExchange">Email signup</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="GoogleAccountOAuth2Exchange">Google</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="MicrosoftPersonalAccountOpenIdConnectExchange">Microsoft</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Culture="es">
+        <LocalizedCollections>
+          <LocalizedCollection ElementType="ClaimType" ElementId="extension_AgreedToTermsOfService" TargetCollection="Restriction">
+            <Item Text="Estoy de acuerdo con los términos de servicio de WoodGrove" Value="True" />
+          </LocalizedCollection>
+        </LocalizedCollections>
+      </LocalizedResources>
+      <LocalizedResources Id="api.account.profile.es">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nombre</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Nombre de la Organización</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.enterpriseaccount.registration.es">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nombre</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Nombre de la Organización</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.localaccount.registration.es">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nombre</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.socialaccount.registration.es">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nombre</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.unified.es">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimsProvider" StringId="SelfAssertedLocalAccountLoginExchange">Email signup</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="GoogleAccountOAuth2Exchange">Google</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="MicrosoftPersonalAccountOpenIdConnectExchange">Microsoft</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Culture="fr">
+        <LocalizedCollections>
+          <LocalizedCollection ElementType="ClaimType" ElementId="extension_AgreedToTermsOfService" TargetCollection="Restriction">
+            <Item Text="J'accepte les conditions d'utilisation de WoodGrove" Value="True" />
+          </LocalizedCollection>
+        </LocalizedCollections>
+      </LocalizedResources>
+      <LocalizedResources Id="api.account.profile.fr">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nom</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Nom de l'organisation</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.enterpriseaccount.registration.fr">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nom</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="extension_OrganizationDisplayName" StringId="DisplayName">Nom de l'organisation</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.localaccount.registration.fr">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nom</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.socialaccount.registration.fr">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimType" ElementId="DisplayName" StringId="DisplayName">Nom</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+      <LocalizedResources Id="api.unified.fr">
+        <LocalizedStrings>
+          <LocalizedString ElementType="ClaimsProvider" StringId="SelfAssertedLocalAccountLoginExchange">Email signup</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="GoogleAccountOAuth2Exchange">Google</LocalizedString>
+          <LocalizedString ElementType="ClaimsProvider" StringId="MicrosoftPersonalAccountOpenIdConnectExchange">Microsoft</LocalizedString>
+        </LocalizedStrings>
+      </LocalizedResources>
+    </Localization>
+  </BuildingBlocks>
+  <ClaimsProviders>
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory Store</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="AzureActiveDirectoryStore-Common">
+          <Metadata>
+            <Item Key="ApplicationObjectId"><!-- The object identifier of the ief-extensions-app application. --></Item>
+            <Item Key="ClientId"><!-- The application identifier of the ief-extensions-app application. --></Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Azure Application Insights</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="AzureApplicationInsights-Common">
+          <Metadata>
+            <Item Key="InstrumentationKey"><!-- The instrumentation key of the Application Insights instance. --></Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Google Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="GoogleAccount-OAuth2">
+          <Metadata>
+            <Item Key="client_id"><!-- The client identifier of the Google application. --></Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="loginHint" PartnerClaimType="login_hint" DefaultValue="{OIDC:LoginHint}" />
+          </InputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LocalAccount-OpenIdConnect">
+          <Metadata>
+            <Item Key="client_id"><!-- The application identifier of the ProxyIdentityExperienceFramework application. --></Item>
+            <Item Key="IdTokenAudience"><!-- The application identifier of the IdentityExperienceFramework application. --></Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="clientId" PartnerClaimType="client_id" DefaultValue="<!-- The application identifier of the ProxyIdentityExperienceFramework application. -->" />
+            <InputClaim ClaimTypeReferenceId="resource" DefaultValue="<!-- The application identifier of the IdentityExperienceFramework application. -->" />
+          </InputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Microsoft Personal Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="MicrosoftPersonalAccount-OpenIdConnect">
+          <Metadata>
+            <Item Key="client_id"><!-- The application identifier of the Microsoft application. --></Item>
+            <Item Key="IdTokenAudience"><!-- The application identifier of the Microsoft application. --></Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Microsoft Work Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="MicrosoftWorkAccount-OpenIdConnect">
+          <Metadata>
+            <Item Key="client_id"><!-- The application identifier of the Microsoft application. --></Item>
+            <Item Key="ClaimsEndpoint"><!-- The endpoint URL of the GetUserInfoForWorkAccountHttpTrigger function. --></Item>
+            <Item Key="IdTokenAudience"><!-- The application identifier of the Microsoft application. --></Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+</TrustFrameworkPolicy>

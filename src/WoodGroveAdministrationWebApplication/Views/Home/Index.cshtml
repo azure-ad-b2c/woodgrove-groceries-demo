@@ -1,0 +1,18 @@
+﻿@model HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+<div class="animated card fadeIn mb-4 wow" style="animation-name: fadeIn; visibility: visible;">
+    <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">Dashboard</h4>
+    </div>
+</div>
+<div class="animated fadeIn row wow " style="animation-name: fadeIn; visibility: visible;">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <iframe allowFullScreen="true" frameborder="0" src="@Model.PowerBIReportPublishUrl"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

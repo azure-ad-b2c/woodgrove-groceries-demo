@@ -1,0 +1,6 @@
+
+.vs
+.vscode
+node_modules
+
+local.settings.json

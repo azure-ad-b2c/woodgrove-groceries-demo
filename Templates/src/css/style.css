@@ -1,0 +1,751 @@
+@font-face {
+  font-family:Roboto;
+  src: local(Roboto Thin), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Thin.eot);
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Thin.eot?#iefix) format("embedded-opentype"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Thin.woff2) format("woff2"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Thin.woff) format("woff"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Thin.ttf) format("truetype");
+  font-weight: 200
+}
+@font-face{
+  font-family: Roboto;
+  src: local(Roboto Light), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Light.eot);
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Light.eot?#iefix) format("embedded-opentype"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Light.woff2) format("woff2"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Light.woff) format("woff"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Light.ttf) format("truetype");
+  font-weight: 300
+}
+@font-face{
+  font-family: Roboto;
+  src: local(Roboto Regular), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Regular.eot);
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Regular.eot?#iefix) format("embedded-opentype"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Regular.woff2) format("woff2"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Regular.woff) format("woff"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400
+}
+@font-face{
+  font-family: Roboto;
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Medium.eot);
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Medium.eot?#iefix) format("embedded-opentype"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Medium.woff2) format("woff2"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Medium.woff) format("woff"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Medium.ttf) format("truetype");
+  font-weight: 500
+}
+@font-face{
+  font-family: Roboto;
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Bold.eot);
+  src: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Bold.eot?#iefix) format("embedded-opentype"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Bold.woff2) format("woff2"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Bold.woff) format("woff"), url(https://woodgroveb2ctmpls.blob.core.windows.net/default/font/roboto/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  background-color: #f5f5f5;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  height: 100%;
+  justify-content: center;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+a {
+  color: #6cbf84;
+}
+
+a:hover {
+  color: #6cbf84;
+  text-decoration: none;
+}
+
+main {
+  margin: auto;
+  max-width: 420px;
+  padding: 15px;
+  width: 100%;
+}
+
+/* TYPOGRAPHY */
+
+h2,
+h3,
+.intro > p {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 1.5rem!important;
+  text-align: center!important;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* BUTTONS */
+
+button {
+  background-color: #fff;
+  border: 0;
+  border-radius: 10rem;
+  -webkit-border-radius: 10rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  color: #323339;
+  cursor: pointer;
+  display: block;
+  font-size: .81rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: .84rem 2.14rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: normal;
+  width: 100%!important;
+  word-wrap: break-word;
+}
+
+button:active,
+button:focus,
+button:hover {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  outline: 0;
+}
+
+button:disabled {
+  opacity: .65;
+}
+
+button:focus,
+button:hover {
+  text-decoration: none;
+}
+
+/* CARDS */
+
+.card {
+  background-clip: border-box;
+  background-color: #fff;
+  border: 0;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  display: -webkit-box;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+  font-weight: 400;
+  min-width: 0;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  -webkit-box-flex: 1;
+  padding: 1.25rem;
+}
+
+.card-header {
+  background-color: #323339;
+  border-radius: 10rem!important;
+  -webkit-border-radius: 10rem!important;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);  
+  color: #fff;
+  margin-bottom: 1.5rem;
+  margin-top: -3.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-header h3 {
+  color: #fff!important;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0!important;
+  padding: 0;
+}
+
+/* FORMS */
+
+input:-moz-placeholder,
+input:-ms-input-placeholder,
+input::-moz-placeholder,
+input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.attrEntry,
+.entry-item {
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.attrEntry input,
+.entry-item input {
+  background-clip: padding-box;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid #ced4da;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  color: #495057;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 .5rem 0;
+  padding: .3rem 0 .55rem 0;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  width: 100%!important;
+}
+
+.attrEntry input:focus,
+.entry-item input:focus {
+  background: 0 0;
+  background-color: #fff;
+  border-color: #6cbf84;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  color: #495057;
+  outline: 0;
+}
+
+.attrEntry input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.attrEntry input[type=checkbox] + label {
+  display: inline-block!important;
+}
+
+.attrEntry input[type=checkbox] + label:before {
+  border: 1.5px solid #8a8a8a;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  content: "";
+  height: 17px;
+  left: 0;
+  margin-top: 2px;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+  -o-transition: .2s;
+  -webkit-transition: .2s;
+  width: 17px;
+  z-index: 0;
+}
+
+.attrEntry input[type=checkbox]:checked + label:before {
+  border-color: transparent #6cbf84 #6cbf84 transparent;
+  border-style: solid;
+  border-width: 2px;
+  height: 22px;
+  left: -3px;
+  top: -4px;
+  width: 12px;
+  transform: rotate(40deg);
+  transform-origin: 100% 100%;
+  -ms-transform: rotate(40deg);
+  -ms-transform-origin: 100% 100%;
+  -webkit-transform: rotate(40deg);
+  -webkit-transform-origin: 100% 100%;
+}
+
+.attrEntry input[type=email],
+.attrEntry input[type=password],
+.attrEntry input[type=text],
+.entry-item input[type=email],
+.entry-item input[type=password] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  outline: 0;
+  transition: all .3s;
+  -o-transition: all .3s;
+  -webkit-transition: all .3s;
+}
+
+.attrEntry input[type=email]:focus,
+.attrEntry input[type=password]:focus,
+.attrEntry input[type=text]:focus,
+.entry-item input[type=email]:focus,
+.entry-item input[type=password]:focus {
+  border-bottom: 1px solid #6cbf84;
+  box-shadow: 0 1px 0 0 #6cbf84;
+  -webkit-box-shadow: 0 1px 0 0 #6cbf84;
+}
+
+.attrEntry input[type=email].highlightError,
+.attrEntry input[type=password].highlightError,
+.attrEntry input[type=text].highlightError,
+.entry-item input[type=email].highlightError,
+.entry-item input[type=password].highlightError {
+  border-bottom: 1px solid #f44336;
+  box-shadow: 0 1px 0 0 #f44336;
+  -webkit-box-shadow: 0 1px 0 0 #f44336;
+}
+
+.attrEntry label,
+.entry-item label {
+  color: #757575;
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.attrEntry .error.itemLevel,
+.attrEntry .helpText,
+.attrEntry .tiny {
+  display: none!important;
+}
+
+.attrEntry .error.itemLevel.show {
+  display: block!important;
+}
+
+.divider {
+  display: none!important;
+}
+
+.error.itemLevel {
+  color: #f44336;
+  font-size: 0.8rem;
+}
+
+.error.itemLevel p {
+  margin-bottom: 0;
+}
+
+.error.pageLevel {
+  color: #f44336;
+}
+
+.errorText {
+  background: inherit;
+  border: inherit;
+  margin: inherit;
+  padding: inherit;
+}
+
+.errorText,
+.verificationErrorText {
+  color: #f44336;
+}
+
+#api ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* ALL PAGES */
+
+body {
+  background-size: cover;
+  background-image: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/images/background.jpg);
+  background-repeat: no-repeat;
+}
+
+.verify {
+  margin-top: 5px;
+  padding-top: 0 !important;
+}
+
+.working {
+  bottom: 0;
+  display: none;
+  height: 2em;
+  left: 0;
+  margin: auto;
+  overflow: show;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 2em;
+  z-index: 999;
+}
+
+.working:before {
+  background-color: rgba(0,0,0,0.3);
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.working:not(:required) {
+  background-color: transparent;
+  border: 0;
+  color: transparent;
+  font: 0/0 a;
+  text-shadow: none;
+}
+
+.working:not(:required):after {
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  content: '';
+  display: block;
+  height: 1em;
+  font-size: 10px;
+  margin-top: -0.5em;
+  width: 1em;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#api h2,
+#api .intro > p {
+  color: #323339!important;
+}
+
+#simplemodal-data.verifying-modal {
+    height: 100%;
+    position: relative;
+}
+
+    #simplemodal-data.verifying-modal:before {
+        animation: spinner 1500ms infinite linear;
+        border-radius: 0.5em;
+        box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        content: '';
+        display: inline-block;
+        font-size: 10px;
+        height: 1em;
+        margin-top: 1em;
+        position: fixed;
+        width: 1em;
+        -moz-animation: spinner 1500ms infinite linear;
+        -ms-animation: spinner 1500ms infinite linear;
+        -o-animation: spinner 1500ms infinite linear;
+        -webkit-animation: spinner 1500ms infinite linear;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+
+/* UNIFIED PAGE */
+
+#api[data-name=Unified] .buttons {
+  margin-top: 1.5rem!important;
+}
+
+#api[data-name=Unified] .create,
+#api[data-name=Unified] .localAccount {
+  border-top: 1px solid #e9ecef;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+#api[data-name=Unified] .create > p {
+  color: #9e9e9e!important;
+  display: flex!important;
+  display: -ms-flexbox!important;
+  -ms-flex-pack: end!important;
+  display: -webkit-box!important;
+  -webkit-box-pack: end!important;
+  font-size: .9rem;
+  justify-content: flex-end!important;
+  margin-bottom: 0;
+}
+
+#api[data-name=Unified] #createAccount {
+  margin-left: .25rem;
+}
+
+#api[data-name=Unified] #forgotPassword {
+  float: right;
+  font-size: .8rem;
+}
+
+#api[data-name=Unified] #GoogleAccountOAuth2Exchange,
+#api[data-name=Unified] #GoogleExchange {
+  margin-bottom: 1rem;
+}
+
+#api[data-name=Unified] #GoogleAccountOAuth2Exchange:before,
+#api[data-name=Unified] #GoogleExchange:before {
+  content: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/images/google.png);
+  padding-right: 0.25rem;
+}
+
+#api[data-name=Unified] #MicrosoftPersonalAccountOpenIdConnectExchange:before,
+#api[data-name=Unified] #MicrosoftAccountExchange:before {
+  content: url(https://woodgroveb2ctmpls.blob.core.windows.net/default/images/microsoft.png);
+  padding-right: 0.25rem;
+}
+
+#api[data-name=Unified] #next {
+  background-color: #6cbf84!important;
+  color: #fff!important;
+}
+
+/* ALL SELF-ASSERTED PAGES */
+
+.self-asserted-container .card-footer {
+  border-top: 1px solid #e9ecef;
+  padding: 1rem;
+}
+
+.self-asserted-container .card-footer .terms-of-service {
+  height: 100px;
+  overflow-y: scroll;
+  padding-right: 0.5rem;
+  width: 100%;
+}
+
+.self-asserted-container .card-footer .terms-of-service p {
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+#api[data-name=SelfAsserted] > .intro {
+  display: none!important;
+}
+
+#api[data-name=SelfAsserted] #attributeVerification > .buttons {
+  border-top: 1px solid #e9ecef;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+#api[data-name=SelfAsserted] #continue {
+  background-color: #6cbf84!important;
+  color: #fff!important;
+  margin-bottom: 1rem;
+}
+
+#api[data-name=SelfAsserted] #cancel,
+#api[data-name=SelfAsserted] #email_ver_but_resend {
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+#api[data-name=SelfAsserted] #email_ver_but_edit,
+#api[data-name=SelfAsserted] #email_ver_but_send,
+#api[data-name=SelfAsserted] #email_ver_but_verify {
+  margin-top: 0.5rem;
+}
+
+#api[data-name=SelfAsserted] #email_ver_but_verify {
+  margin-bottom: 1rem;
+}
+
+#api[data-name=SelfAsserted] #email_ver_input,
+#api[data-name=SelfAsserted] #email_ver_input_label {
+  margin-top: 2rem;
+}
+
+/* LOCAL ACCOUNT REGISTRATION PAGE */
+
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div {
+  display: block;
+  margin-top: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(1) {
+  display: none!important;
+}
+
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(4) {
+  color: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+  position: static;
+  transform: inherit;
+}
+
+/* SOCIAL ACCOUNT REGISTRATION PAGE */
+
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div {
+  display: block;
+  margin-top: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(1) {
+  display: none!important;
+}
+
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(4) {
+  color: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+  position: static;
+  transform: inherit;
+}
+
+/* ENTERPRISE ACCOUNT REGISTRATION PAGE */
+
+.enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(4) > div {
+  display: block;
+  margin-top: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(4) > div > label:nth-child(1) {
+  display: none!important;
+}
+
+.enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(4) > div > label:nth-child(4) {
+  color: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+  position: static;
+  transform: inherit;
+}
+
+/* ACCOUNT PROFILE PAGE */
+
+.account-profile-container #api[data-name=SelfAsserted] button {
+  border: 0;
+  border-radius: 10rem;
+  -webkit-border-radius: 10rem;
+  font-size: .8rem;
+  height: inherit;
+  margin: 0;
+}
+
+.account-profile-container #api[data-name=SelfAsserted] #continue {
+  margin-bottom: 1rem;
+}
+
+/* ACCOUNT TERMS OF SERVICE PAGE */
+
+.account-terms-of-service-container .card-alert {
+  border: 1px solid #ff3547!important;
+  border-radius: .25rem;
+  -webkit-border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  color: #ff3547;
+  padding: 1rem;
+}
+
+.account-terms-of-service-container .card-alert p {
+  margin-bottom: 0;
+}
+
+.account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div {
+  display: block;
+  margin-top: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div > label:nth-child(1) {
+  display: none!important;
+}
+
+.account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div > label:nth-child(4) {
+  color: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+  position: static;
+  transform: inherit;
+}

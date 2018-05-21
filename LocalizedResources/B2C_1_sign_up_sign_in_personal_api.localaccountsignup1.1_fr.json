@@ -1,0 +1,25 @@
+{
+  "LocalizedStrings": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "displayName",
+      "StringId": "DisplayName",
+      "Override": true,
+      "Value": "Nom"
+    }
+  ],
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "extension_AgreedToTermsOfService",
+      "TargetCollection": "Restriction",
+      "Override": true,
+      "Items": [
+        {
+          "Name": "J'accepte les conditions d'utilisation de WoodGrove",
+          "Value": "True"
+        }
+      ]
+    }
+  ]
+}

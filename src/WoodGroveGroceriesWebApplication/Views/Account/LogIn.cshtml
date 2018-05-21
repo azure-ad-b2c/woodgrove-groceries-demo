@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Sign in";
+}
+<main class="mt-3 pt-3">
+    <form asp-controller="Account" asp-action="LogInFor" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Language</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="active btn btn-default btn-rounded btn-sm form-check-label waves-effect waves-light">
+                            <input name="UILocale" class="form-check-input" type="radio" value="en" autocomplete="off" checked> English
+                        </label>
+                        <label class="btn btn-default btn-rounded btn-sm form-check-label waves-effect waves-light">
+                            <input name="UILocale" class="form-check-input" type="radio" value="es" autocomplete="off"> español
+                        </label>
+                        <label class="btn btn-default btn-rounded btn-sm form-check-label waves-effect waves-light">
+                            <input name="UILocale" class="form-check-input" type="radio" value="fr" autocomplete="off"> français
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <section class="text-center pt-5">
+                <div class="fadeIn mb-4 row wow" style="animation-name: fadeIn; visibility: visible;">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="overlay view">
+                                <img alt="" class="card-img-top" src="https://woodgrovegroceriesb2c.blob.core.windows.net/images/sign-in-b2c-personal.jpg">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Individual customers</h4>
+                                <p class="card-text">Order your fresh groceries with WoodGrove Groceries and our friendly drivers will deliver your grocery shopping to your home door.</p>
+                                <button name="command" class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit" value="@Constants.AuthenticationSchemes.B2COpenIdConnect:@Constants.Policies.SignUpOrSignInWithPersonalAccount">Sign in with your personal account</button>
+                                <button name="command" class="btn btn-link btn-md" type="submit" value="@Constants.AuthenticationSchemes.B2COpenIdConnect:@Constants.Policies.SignUpOrSignInWithPersonalAccount">Sign up with your personal account</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="overlay view">
+                                <img alt="" class="card-img-top" src="https://woodgrovegroceriesb2c.blob.core.windows.net/images/sign-in-b2c-work.jpg">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Business customers</h4>
+                                <p class="card-text">Order your fresh groceries with WoodGrove Groceries and our friendly drivers will deliver your grocery shopping to your office door.</p>
+                                <button name="command" class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit" value="@Constants.AuthenticationSchemes.B2COpenIdConnect:@Constants.Policies.SignUpOrSignInWithWorkAccount">Sign in with your work account</button>
+                                <button name="command" class="btn btn-link btn-md" type="submit" value="@Constants.AuthenticationSchemes.B2COpenIdConnect:@Constants.Policies.SignUpOrSignInWithWorkAccount">Sign up with your work account</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="overlay view">
+                                <img alt="" class="card-img-top" src="https://woodgrovegroceriesb2c.blob.core.windows.net/images/sign-in-b2b.jpg">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Partners</h4>
+                                <p class="card-text">Manage your local produce in our inventory so we can deliver your fresh groceries to our customers.</p>
+                                <button name="command" class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit" value="@Constants.AuthenticationSchemes.B2BOpenIdConnect:">Sign in with your supplier account</button>
+                                <a class="btn btn-link btn-md" href="https://aka.ms/woodgroveb2bsignup">Request your supplier account</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</main>
