@@ -183,10 +183,19 @@ button:hover {
 
 /* FORMS */
 
-input:-moz-placeholder,
-input:-ms-input-placeholder,
-input::-moz-placeholder,
-input::-webkit-input-placeholder {
+:-moz-placeholder  {
+  color: transparent;
+}
+
+:-ms-input-placeholder  {
+  color: transparent;
+}
+
+::-moz-placeholder {
+  color: transparent;
+}
+
+::-webkit-input-placeholder {
   color: transparent;
 }
 
