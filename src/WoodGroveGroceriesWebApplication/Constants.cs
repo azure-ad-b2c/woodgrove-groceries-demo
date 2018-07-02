@@ -64,6 +64,8 @@
 
             public const string SignUpOrSignInWithPersonalAccount = "b2c_1_sign_up_sign_in_personal";
 
+            public const string SignUpOrSignInWithPersonalAccountUsingRewriteRules = "b2c_1a_sign_up_sign_in_personal_flight";
+
             public const string SignUpOrSignInWithWorkAccount = "b2c_1a_sign_up_sign_in_work";
         }
 

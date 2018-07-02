@@ -43,7 +43,6 @@ namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
             foreach (var configurationManager in _configurationManagers)
             {
                 var configuration = await configurationManager.Value.GetConfigurationAsync(cancel);
-                //FixConfiguration(configurationManager.Key, configuration);
 
                 if (mergedConfiguration != null)
                 {
@@ -103,21 +102,6 @@ namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
 
             return clonedConfiguration;
         }
-
-        //private static void FixConfiguration(string policy, OpenIdConnectConfiguration configuration)
-        //{
-        //    configuration.AuthorizationEndpoint = FixEndpointUrl(policy, configuration.AuthorizationEndpoint);
-        //    configuration.TokenEndpoint = FixEndpointUrl(policy, configuration.TokenEndpoint);
-        //    configuration.EndSessionEndpoint = FixEndpointUrl(policy, configuration.EndSessionEndpoint);
-        //    configuration.JwksUri = FixEndpointUrl(policy, configuration.JwksUri);
-        //}
-
-        //private static string FixEndpointUrl(string policy, string endpointUrl)
-        //{
-        //    var endpointUrlParts = endpointUrl.Split('/');
-        //    endpointUrlParts[4] = policy;
-        //    return string.Join("/", endpointUrlParts);
-        //}
 
         private static void MergeConfiguration(OpenIdConnectConfiguration mergedConfiguration, OpenIdConnectConfiguration configurationToBeMerged)
         {

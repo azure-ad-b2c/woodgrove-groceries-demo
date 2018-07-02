@@ -137,6 +137,7 @@ namespace WoodGroveGroceriesWebApplication
                         Constants.Policies.ProfileUpdateWithPersonalAccount,
                         Constants.Policies.ProfileUpdateWithWorkAccount,
                         Constants.Policies.SignUpOrSignInWithPersonalAccount,
+                        Constants.Policies.SignUpOrSignInWithPersonalAccountUsingRewriteRules,
                         Constants.Policies.SignUpOrSignInWithWorkAccount
                     });
 

@@ -183,10 +183,23 @@ button:hover {
 
 /* FORMS */
 
-input:-moz-placeholder,
-input:-ms-input-placeholder,
-input::-moz-placeholder,
-input::-webkit-input-placeholder {
+:-moz-placeholder  {
+  color: transparent;
+}
+
+:-ms-input-placeholder  {
+  color: transparent;
+}
+
+::-moz-placeholder {
+  color: transparent;
+}
+
+::-ms-input-placeholder  {
+  color: transparent;
+}
+
+::-webkit-input-placeholder {
   color: transparent;
 }
 
@@ -197,6 +210,7 @@ input::-webkit-input-placeholder {
 }
 
 .attrEntry input,
+.attrEntry select,
 .entry-item input {
   background-clip: padding-box;
   background-color: transparent;
@@ -215,6 +229,7 @@ input::-webkit-input-placeholder {
 }
 
 .attrEntry input:focus,
+.attrEntry select:focus,
 .entry-item input:focus {
   background: 0 0;
   background-color: #fff;
@@ -271,6 +286,7 @@ input::-webkit-input-placeholder {
 .attrEntry input[type=email],
 .attrEntry input[type=password],
 .attrEntry input[type=text],
+.attrEntry select,
 .entry-item input[type=email],
 .entry-item input[type=password] {
   background-color: transparent;
@@ -289,6 +305,7 @@ input::-webkit-input-placeholder {
 .attrEntry input[type=email]:focus,
 .attrEntry input[type=password]:focus,
 .attrEntry input[type=text]:focus,
+.attrEntry select:focus,
 .entry-item input[type=email]:focus,
 .entry-item input[type=password]:focus {
   border-bottom: 1px solid #6cbf84;
@@ -299,6 +316,7 @@ input::-webkit-input-placeholder {
 .attrEntry input[type=email].highlightError,
 .attrEntry input[type=password].highlightError,
 .attrEntry input[type=text].highlightError,
+.attrEntry select.highlightError,
 .entry-item input[type=email].highlightError,
 .entry-item input[type=password].highlightError {
   border-bottom: 1px solid #f44336;
@@ -635,7 +653,9 @@ body {
 
 /* LOCAL ACCOUNT REGISTRATION PAGE */
 
-.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div {
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div,
+.local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div,
+.local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div {
   display: block;
   margin-top: 1.5rem;
   min-height: 1.5rem;
@@ -643,11 +663,15 @@ body {
   position: relative;
 }
 
-.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(1) {
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(1),
+.local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(1),
+.local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(1) {
   display: none!important;
 }
 
-.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(4) {
+.local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(4),
+.local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(4),
+.local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(4) {
   color: inherit;
   font-size: inherit;
   margin-bottom: 0;
@@ -657,7 +681,9 @@ body {
 
 /* SOCIAL ACCOUNT REGISTRATION PAGE */
 
-.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div {
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div,
+.social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div,
+.social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div {
   display: block;
   margin-top: 1.5rem;
   min-height: 1.5rem;
@@ -665,11 +691,15 @@ body {
   position: relative;
 }
 
-.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(1) {
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(1),
+.social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(1),
+.social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(1) {
   display: none!important;
 }
 
-.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(4) {
+.social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(4),
+.social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(5) > div > label:nth-child(4),
+.social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(2) > div > label:nth-child(4) {
   color: inherit;
   font-size: inherit;
   margin-bottom: 0;
