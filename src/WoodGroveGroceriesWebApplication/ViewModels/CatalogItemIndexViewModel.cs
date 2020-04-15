@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace WoodGroveGroceriesWebApplication.ViewModels
+﻿namespace WoodGroveGroceriesWebApplication.ViewModels
 {
+    using System.Collections.Generic;
+
     public class CatalogItemIndexViewModel
     {
         public string FormAspAction { get; set; }

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.Repositories;
-using WoodGroveGroceriesWebApplication.Repositories.Specifications;
-using WoodGroveGroceriesWebApplication.ViewModels;
-
-namespace WoodGroveGroceriesWebApplication.ViewServices
+﻿namespace WoodGroveGroceriesWebApplication.ViewServices
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Entities;
+    using Repositories;
+    using Repositories.Specifications;
+    using ViewModels;
+
     public class PantryViewService : IPantryViewService
     {
         private readonly IRepository<CatalogItem> _catalogItemRepository;
@@ -35,10 +35,7 @@ namespace WoodGroveGroceriesWebApplication.ViewServices
 
         private async Task<Pantry> CreatePantryForOwnerAsync(string ownerId)
         {
-            var pantry = new Pantry
-            {
-                OwnerId = ownerId
-            };
+            var pantry = new Pantry {OwnerId = ownerId};
 
             await _pantryRepository.AddAsync(pantry);
             return pantry;
@@ -46,19 +43,11 @@ namespace WoodGroveGroceriesWebApplication.ViewServices
 
         private async Task<PantryViewModel> CreatePantryViewModelFromPantryAsync(Pantry pantry)
         {
-            var pantryViewModel = new PantryViewModel
-            {
-                Id = pantry.Id,
-                OwnerId = pantry.OwnerId
-            };
+            var pantryViewModel = new PantryViewModel {Id = pantry.Id, OwnerId = pantry.OwnerId};
 
             foreach (var pantryItem in pantry.Items)
             {
-                var pantryItemViewModel = new PantryItemViewModel
-                {
-                    Id = pantryItem.Id,
-                    CatalogItemId = pantryItem.CatalogItemId
-                };
+                var pantryItemViewModel = new PantryItemViewModel {Id = pantryItem.Id, CatalogItemId = pantryItem.CatalogItemId};
 
                 var catalogItem = await _catalogItemRepository.GetAsync(pantryItem.CatalogItemId);
                 pantryItemViewModel.ProductId = catalogItem.ProductId;

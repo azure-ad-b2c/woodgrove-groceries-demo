@@ -1,0 +1,141 @@
+﻿@model WoodGroveGroceriesWebApplication.ViewModels.ConfigurationViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<style type="text/css">
+    #drpDefaultPolicy { display: block !important; }
+
+    #drpIndustry { display: block !important; }
+
+    #btnSave { margin-top: 10px; }
+
+    .logoPreview {
+        border: 1px solid #ccc;
+        height: 60px;
+        width: auto !important;
+    }
+</style>
+
+@using (Html.BeginForm("Configure", "Configuration", FormMethod.Post, new {id = "frmConfigureApp"}))
+{
+    <div class="form-horizontal">
+        <h2>Configure</h2>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.Label("Background Image Link")
+                <div>
+                    @Html.TextBoxFor(m => m.BgImageUrl, new {style = "width:80%", id = "txtBkgImageLink"})
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                @Html.Label("Logo Image Link")
+                <div>
+                    @Html.TextBoxFor(m => m.LogoImageUrl, new {style = "width:80%", id = "txtLogoImageLink"})
+                </div>
+            </div>
+
+            <div class="col-md-10" id="logoPreviewDiv" style="display: none">
+                @Html.Label("Logo Image Preview")
+                <div>
+                    <img id="logoPreview" class="logoPreview" src="@Model.LogoImageUrl" alt="logo"/>
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                @Html.Label("Default Sign-in Policy")
+                <div>
+                    @{
+                        var policyList = new List<SelectListItem>();
+                        @foreach (var kvp in Model.PolicyList)
+                        {
+                            policyList.Add(new SelectListItem {Text = kvp.Key, Value = kvp.Value, Selected = kvp.Value == Model.DefaultSUSIPolicy});
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.DefaultSUSIPolicy, policyList, new {style = "width:80%", id = "drpDefaultPolicy"})
+
+                    @*new List<SelectListItem>
+                {
+                    new SelectListItem {Text = "Local Only", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalEmail, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalEmail},
+                    new SelectListItem {Text = "Local & Social", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalEmailAndSocial, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalEmailAndSocial || string.IsNullOrEmpty(Model.DefaultSUSIPolicy)},
+                    //new SelectListItem() { Text = "Invitation Flow", Value = @Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialSendInvitation, Selected = Model.DefaultSUSIPolicy == @Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialSendInvitation},
+                    new SelectListItem {Text = "Social & Username - Inline Age Gating", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocial, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocial},
+                    new SelectListItem {Text = "Social & Username - With Pre Age Gating", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialWithPreAgeGating, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialWithPreAgeGating},
+                    new SelectListItem {Text = "Social & Phone", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalPhoneAndSocial, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalPhoneAndSocial},
+                    new SelectListItem {Text = "Phone based OTP", Value = Constants.Policies.SignInWithPersonalAccountLocalPhoneWithOtp, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignInWithPersonalAccountLocalPhoneWithOtp},
+                    new SelectListItem {Text = "Social & Username - TOTP MFA", Value = Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialWithTotpMfa, Selected = Model.DefaultSUSIPolicy == Constants.Policies.SignUpOrSignInWithPersonalAccountLocalUsernameAndSocialWithTotpMfa}
+                    //new SelectListItem() { Text = "Age Gating Dev Sample", Value = @Constants.Policies.SignInWithAgeGatingDevSample, Selected = Model.DefaultSUSIPolicy == @Constants.Policies.SignInWithPersonalAccountLocalPhoneWithOtp},
+                }, new { style = "width:80%", id = "drpDefaultPolicy" })*@
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                @Html.Label("Industry")
+                <div>
+                    @{
+                        var industryList = new List<SelectListItem>();
+                        @foreach (var industry in Model.IndustryList)
+                        {
+                            industryList.Add(new SelectListItem {Text = industry, Value = industry, Selected = industry == Model.Industry});
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.Industry, industryList, new {style = "width:80%", id = "drpIndustry"})
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnSave" type="submit" name="update_action" value="Update" class="btn btn-success"/>
+                    <input id="btnDefault" type="submit" name="setDefalut_action" value="Set to defaults" class="btn btn-success"/>
+                </div>
+            </div>
+            @*<div>
+            @if (ViewBag.Success != null && ViewBag.Success)
+            {
+                @Html.Label("Configuration Updated Successfully");
+            }
+        </div>*@
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                DisableSaveButton(true);
+                ManageLogoImagePreview();
+
+                $("#txtLogoImageLink").change(function() {
+                    ManageLogoImagePreview();
+                    DisableSaveButton(false);
+                });
+
+                $("#txtBkgImageLink").change(function() {
+                    DisableSaveButton(false);
+                });
+
+                $("#drpDefaultPolicy").change(function() {
+                    DisableSaveButton(false);
+                });
+
+                $("#drpIndustry").change(function() {
+                    DisableSaveButton(false);
+                });
+
+                function ManageLogoImagePreview() {
+                    if ($("#txtLogoImageLink").val().length > 0) {
+                        $("#logoPreview").attr("src", $("#txtLogoImageLink").val());
+                        $("#logoPreviewDiv").show();
+                    } else {
+                        $("#logoPreviewDiv").hide();
+                    }
+                }
+
+                function DisableSaveButton(isDisable) {
+
+                    $("#btnSave").attr("disabled", isDisable);
+                }
+            });
+        </script>
+    </div>
+}

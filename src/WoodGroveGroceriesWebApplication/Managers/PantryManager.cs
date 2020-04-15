@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.Repositories;
-
-namespace WoodGroveGroceriesWebApplication.Managers
+﻿namespace WoodGroveGroceriesWebApplication.Managers
 {
+    using System;
+    using System.Threading.Tasks;
+    using Entities;
+    using Repositories;
+
     public class PantryManager : IPantryManager
     {
         private readonly IRepository<Pantry> _pantryRepository;

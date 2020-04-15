@@ -1,22 +1,23 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using WoodGroveGroceriesWebApplication.Extensions;
-using WoodGroveGroceriesWebApplication.Managers;
-using WoodGroveGroceriesWebApplication.ViewModels;
-using WoodGroveGroceriesWebApplication.ViewServices;
-
-namespace WoodGroveGroceriesWebApplication.Controllers
+﻿namespace WoodGroveGroceriesWebApplication.Controllers
 {
+    using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Managers;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+    using ViewServices;
+
     [Authorize(Policy = Constants.AuthorizationPolicies.AccessTrolley)]
-    public class TrolleyController : Controller
+    public class TrolleyController : BaseController
     {
         private readonly ITrolleyManager _trolleyManager;
         private readonly ITrolleyViewService _trolleyViewService;
 
-        public TrolleyController(ITrolleyViewService trolleyViewService, ITrolleyManager trolleyManager)
+        public TrolleyController(ITrolleyViewService trolleyViewService, ITrolleyManager trolleyManager, IndustryManager industryManager) :
+            base(industryManager)
         {
             _trolleyViewService = trolleyViewService ?? throw new ArgumentNullException(nameof(trolleyViewService));
             _trolleyManager = trolleyManager ?? throw new ArgumentNullException(nameof(trolleyManager));
@@ -44,8 +45,7 @@ namespace WoodGroveGroceriesWebApplication.Controllers
 
             var viewModel = new TrolleyIndexViewModel
             {
-                AspController = userIsInBusinessCustomerStockerRole ? "Pantry" : "CatalogItem",
-                Trolley = await GetTrolleyViewModelAsync()
+                AspController = userIsInBusinessCustomerStockerRole ? "Pantry" : "CatalogItem", Trolley = await GetTrolleyViewModelAsync()
             };
 
             return View(viewModel);

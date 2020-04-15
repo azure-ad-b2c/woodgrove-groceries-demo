@@ -9,5 +9,7 @@
         public string ProductName { get; set; }
 
         public string ProductPictureUrl { get; set; }
+
+        public string ProductAllergyInfo { get; set; }
     }
 }

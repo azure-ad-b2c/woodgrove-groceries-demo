@@ -13,5 +13,7 @@
         public string ProductPictureUrl { get; set; }
 
         public int Quantity { get; set; }
+
+        public string ProductAllergyInfo { get; set; }
     }
 }

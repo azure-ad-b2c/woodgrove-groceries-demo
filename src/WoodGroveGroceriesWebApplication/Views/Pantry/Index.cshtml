@@ -1,10 +1,15 @@
-﻿@model WoodGroveGroceriesWebApplication.ViewModels.PantryIndexViewModel
+﻿@using WoodGroveGroceriesWebApplication.Extensions
+@using WoodGroveGroceriesWebApplication.Managers
+@inject IdentityService IdentityService
+
+@model WoodGroveGroceriesWebApplication.ViewModels.PantryIndexViewModel
 @{
-    ViewBag.Title = "Pantry";
+    var industry = (IIndustry)ViewData["Industry"];
+    ViewBag.Title = industry.PantryHeader;
 }
-<main class="mt-3 pt-3">
+<main class="">
     <nav class="mb-5 navbar navbar-dark navbar-expand-lg wg-black">
-        <a class="font-weight-bold mr-4 white-text" href="#">Pantry</a>
+        <a class="font-weight-bold mr-4 white-text" href="#">@industry.PantryHeader</a>
         <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent1" data-toggle="collapse" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +32,7 @@
                         <input name="CatalogItemId" type="hidden" value="@item.CatalogItemId" />
                         <div class="card card-ecommerce">
                             <div class="overlay view">
-                                <img alt="" class="img-fluid" src="@item.ProductPictureUrl">
+                                <img alt="@item.ProductName" class="img-fluid" src="@item.ProductPictureUrl">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title mb-1">
@@ -35,7 +40,9 @@
                                 </h5>
                                 <div class="card-footer pb-0">
                                     <div class="mb-0 row">
-                                        <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit"><i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText</button>
+                                        <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit">
+                                            <i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText
+                                        </button>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,17 @@
+﻿@using WoodGroveGroceriesWebApplication.Managers
+@model WoodGroveGroceriesWebApplication.ViewModels.TrolleyIndexViewModel
+@{
+    ViewBag.Title = "Check Out";
+    var industry = (IIndustry) ViewData["Industry"];
+}
+
+<style type="text/css">
+
+    .section h3 { text-align: center; }
+</style>
+
+<main class="">
+    <section class="section mb-5 pb-5">
+        <h3>@industry.CheckoutMessage</h3>
+    </section>
+</main>

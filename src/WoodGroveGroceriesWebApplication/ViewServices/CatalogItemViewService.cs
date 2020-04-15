@@ -1,48 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.Extensions;
-using WoodGroveGroceriesWebApplication.Repositories;
-using WoodGroveGroceriesWebApplication.Repositories.Specifications;
-using WoodGroveGroceriesWebApplication.ViewModels;
-
-namespace WoodGroveGroceriesWebApplication.ViewServices
+﻿namespace WoodGroveGroceriesWebApplication.ViewServices
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Entities;
+    using Extensions;
+    using Managers;
+    using Repositories;
+    using Repositories.Specifications;
+    using ViewModels;
+
     public class CatalogItemViewService : ICatalogItemViewService
     {
         private readonly IRepository<CatalogItem> _catalogItemRepository;
+        private readonly IndustryManager _manager;
 
-        public CatalogItemViewService(IRepository<CatalogItem> catalogItemRepository)
+        public CatalogItemViewService(IRepository<CatalogItem> catalogItemRepository, IndustryManager manager)
         {
             _catalogItemRepository = catalogItemRepository ?? throw new ArgumentNullException(nameof(catalogItemRepository));
+            _manager = manager;
         }
 
         public async Task<IEnumerable<CatalogItemViewModel>> GetCatalogItemsAsync(ClaimsPrincipal user)
         {
             ISpecification<CatalogItem> listSpecification;
 
-            if (user.IsInPartnerRole())
-            {
-                var ownerId = user.FindFirstValue(Constants.ClaimTypes.OwnerIdentifier);
-                listSpecification = new CatalogItemForOwnerSpecification(ownerId);
-            }
-            else
-            {
-                listSpecification = new AllCatalogItemsSpecification();
-            }
+            //if (user.IsInPartnerRole())
+            //{
+            //    var ownerId = user.FindFirstValue(Constants.ClaimTypes.OwnerIdentifier);
+            //    listSpecification = new CatalogItemForOwnerSpecification(ownerId);
+            //}
+            //else
+            //{
+            //    listSpecification = new AllCatalogItemsSpecification();
+            //}
+
+            listSpecification = new AllCatalogItemsSpecification();
 
             var catalogItems = await _catalogItemRepository.ListAsync(listSpecification);
 
-            return catalogItems.Select(catalogItem => new CatalogItemViewModel
+            return catalogItems.Select(catalogItem =>
             {
-                Id = catalogItem.Id,
-                OwnerId = catalogItem.OwnerId,
-                ProductId = catalogItem.ProductId,
-                ProductName = catalogItem.ProductName,
-                ProductPictureUrl = catalogItem.ProductPictureUrl
+                var newItem = _manager.GetIndustry().ConvertItem(catalogItem);
+
+                return new CatalogItemViewModel
+                {
+                    Id = newItem.Id,
+                    OwnerId = newItem.OwnerId,
+                    ProductId = newItem.ProductId,
+                    ProductName = newItem.ProductName,
+                    ProductPictureUrl = newItem.ProductPictureUrl,
+                    ProductAllergyInfo = newItem.ProductAllergyInfo
+                };
             });
         }
     }

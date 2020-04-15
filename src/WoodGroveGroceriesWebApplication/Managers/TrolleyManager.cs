@@ -1,10 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.Repositories;
-
-namespace WoodGroveGroceriesWebApplication.Managers
+﻿namespace WoodGroveGroceriesWebApplication.Managers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Entities;
+    using Repositories;
+
     public class TrolleyManager : ITrolleyManager
     {
         private readonly IRepository<Trolley> _trolleyRepository;
@@ -25,6 +26,20 @@ namespace WoodGroveGroceriesWebApplication.Managers
         {
             var trolley = await _trolleyRepository.GetAsync(id);
             trolley.RemoveItem(itemId);
+            await _trolleyRepository.UpdateAsync(trolley);
+        }
+
+        public async Task RemoveAllItemFromTrolleyAsync(string id)
+        {
+            var trolley = await _trolleyRepository.GetAsync(id);
+
+            var trolleyItemIds = trolley.Items.Select(x => x.Id).ToList();
+
+            foreach (var itemId in trolleyItemIds)
+            {
+                trolley.RemoveItem(itemId);
+            }
+
             await _trolleyRepository.UpdateAsync(trolley);
         }
     }

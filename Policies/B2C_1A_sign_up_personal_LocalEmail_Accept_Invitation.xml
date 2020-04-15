@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+	PolicySchemaVersion="0.3.0.0"
+	TenantId="yourtenant.onmicrosoft.com" 
+	PolicyId="B2C_1A_sign_up_personal_local_email_accept_invitation"
+	PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_sign_up_personal_local_email_accept_invitation"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  DeploymentMode="Development"
+  >
+  <BasePolicy>
+    <TenantId>yourtenant.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_ext</PolicyId>
+  </BasePolicy>
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignInWithPersonalAccount-LocalEmail-Accept-Invitation" />
+    <UserJourneyBehaviors>
+    
+      <ContentDefinitionParameters>
+        <Parameter Name="bkg">{OAUTH-KV:bkg}</Parameter>
+        <Parameter Name="logo">{OAUTH-KV:logo}</Parameter>
+      </ContentDefinitionParameters>
+      <ScriptExecution>Allow</ScriptExecution>
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="RelyingParty-SignUpOrSignInWithPersonalAccount-LocalEmail-Accept-Invitation">
+      <DisplayName>Sign Up Or Sign In</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+       <InputTokenFormat>JWT</InputTokenFormat>
+      <InputClaims>            
+        <InputClaim ClaimTypeReferenceId="invitedEmail"/>
+        <InputClaim ClaimTypeReferenceId="invitedAccountId"/>
+        <InputClaim ClaimTypeReferenceId="invitedGroupId"/>
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="newUser" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" PartnerClaimType="emails" />
+        <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" DefaultValue="{policy}" />
+        <OutputClaim ClaimTypeReferenceId="extension_Allergens" PartnerClaimType="Allergens"/>   
+        <OutputClaim ClaimTypeReferenceId="ProfileCompletion" />
+        <OutputClaim ClaimTypeReferenceId="extension_SocialAccountLinked" PartnerClaimType="LinkedSocialAccount"/>
+        <OutputClaim ClaimTypeReferenceId="extension_GroupName" PartnerClaimType="Group"/>
+        <OutputClaim ClaimTypeReferenceId="mfaType" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>

@@ -1,6 +1,12 @@
-﻿@model WoodGroveGroceriesWebApplication.ViewComponentModels.TrolleyViewComponentModel
+﻿@using WoodGroveGroceriesWebApplication.Managers
+@model WoodGroveGroceriesWebApplication.ViewComponentModels.TrolleyViewComponentModel
+
+@{
+    var industry = (IIndustry) ViewData["Industry"];
+}
+
 <a class="font-weight-bold nav-link waves-effect waves-light" asp-controller="Trolley" asp-action="Index">
     <span class="badge badge-pill wg-green">@Model.ItemCount</span>
-    <i class="fa fa-shopping-cart wg-black-text" aria-hidden="true"></i>
-    <span class="clearfix d-none d-sm-inline-block">Trolley</span>
+    <i class="fa @industry.CartHeaderLogo wg-black-text" aria-hidden="true"></i>
+    <span class="clearfix d-none d-sm-inline-block">@industry.CartHeader</span>
 </a>

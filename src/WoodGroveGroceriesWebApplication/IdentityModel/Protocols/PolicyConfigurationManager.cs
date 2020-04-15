@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
-
-namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
+﻿namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.IdentityModel.Protocols;
+    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+    using Microsoft.IdentityModel.Tokens;
+
     public class PolicyConfigurationManager : IConfigurationManager<OpenIdConnectConfiguration>
     {
-        private readonly IDictionary<string, IConfigurationManager<OpenIdConnectConfiguration>> _configurationManagers;
+        private readonly IDictionary<string, IConfigurationManager<OpenIdConnectConfiguration>> _configurationManagers = 
+            new Dictionary<string, IConfigurationManager<OpenIdConnectConfiguration>>();
 
         public PolicyConfigurationManager(string authority, IEnumerable<string> policies)
         {
@@ -25,14 +26,16 @@ namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
                 throw new ArgumentNullException(nameof(policies));
             }
 
-            _configurationManagers = new Dictionary<string, IConfigurationManager<OpenIdConnectConfiguration>>();
-
             foreach (var policy in policies)
             {
-                var metadataAddress = $"{authority}/{policy}/v2.0/.well-known/openid-configuration?dc=cdm&slice=001-000";
+                var metadataAddress = $"{authority}/{policy}/v2.0/.well-known/openid-configuration";
                 var configurationRetriever = new OpenIdConnectConfigurationRetriever();
                 var configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, configurationRetriever);
-                _configurationManagers.Add(policy.ToLowerInvariant(), configurationManager);
+
+                if (!_configurationManagers.ContainsKey(policy.ToLowerInvariant()))
+                {
+                    _configurationManagers.Add(policy.ToLowerInvariant(), configurationManager);
+                }
             }
         }
 
@@ -57,6 +60,14 @@ namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
             return mergedConfiguration;
         }
 
+        public void RequestRefresh()
+        {
+            foreach (var configurationManager in _configurationManagers)
+            {
+                configurationManager.Value.RequestRefresh();
+            }
+        }
+
         public Task<OpenIdConnectConfiguration> GetConfigurationForPolicyAsync(string policy, CancellationToken cancel)
         {
             if (string.IsNullOrEmpty(policy))
@@ -73,14 +84,6 @@ namespace WoodGroveGroceriesWebApplication.IdentityModel.Protocols
 
             var configurationManager = _configurationManagers[policy];
             return configurationManager.GetConfigurationAsync(cancel);
-        }
-
-        public void RequestRefresh()
-        {
-            foreach (var configurationManager in _configurationManagers)
-            {
-                configurationManager.Value.RequestRefresh();
-            }
         }
 
         private static OpenIdConnectConfiguration CloneConfiguration(OpenIdConnectConfiguration configuration)

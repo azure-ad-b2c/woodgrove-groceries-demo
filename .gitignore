@@ -328,3 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Policies/B2CPolicyHelper.exe
+/Policies/Environments

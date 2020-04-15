@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WoodGroveGroceriesWebApplication.ViewComponentModels;
-using WoodGroveGroceriesWebApplication.ViewModels;
-using WoodGroveGroceriesWebApplication.ViewServices;
-
-namespace WoodGroveGroceriesWebApplication.ViewComponents
+﻿namespace WoodGroveGroceriesWebApplication.ViewComponents
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewComponentModels;
+    using ViewModels;
+    using ViewServices;
+
     public class TrolleyViewComponent : ViewComponent
     {
         private readonly ITrolleyViewService _trolleyViewService;
@@ -21,10 +21,7 @@ namespace WoodGroveGroceriesWebApplication.ViewComponents
         {
             var trolleyViewModel = await GetTrolleyViewModelAsync(ownerId);
 
-            var trolleyViewComponentModel = new TrolleyViewComponentModel
-            {
-                ItemCount = trolleyViewModel.Items.Sum(item => item.Quantity)
-            };
+            var trolleyViewComponentModel = new TrolleyViewComponentModel {ItemCount = trolleyViewModel.Items.Sum(item => item.Quantity)};
 
             return View(trolleyViewComponentModel);
         }

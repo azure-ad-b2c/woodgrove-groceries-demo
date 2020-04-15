@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.EntityFramework;
-using WoodGroveGroceriesWebApplication.Repositories.Specifications;
-
-namespace WoodGroveGroceriesWebApplication.Repositories
+﻿namespace WoodGroveGroceriesWebApplication.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Entities;
+    using EntityFramework;
+    using Microsoft.EntityFrameworkCore;
+    using Specifications;
+
     public class DbRepository<TEntity> : IRepository<TEntity>
         where TEntity : EntityBase
     {
@@ -31,8 +31,7 @@ namespace WoodGroveGroceriesWebApplication.Repositories
 
         public Task<TEntity> GetAsync(string id)
         {
-            return DbContext.Set<TEntity>()
-                .FindAsync(id);
+            return DbContext.Set<TEntity>().FindAsync(id).AsTask();
         }
 
         public async Task<IEnumerable<TEntity>> ListAsync()

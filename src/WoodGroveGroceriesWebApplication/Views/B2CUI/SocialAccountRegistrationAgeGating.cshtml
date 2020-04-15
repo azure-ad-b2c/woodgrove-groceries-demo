@@ -1,0 +1,1115 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://woodgroveb2ctmpls.blob.core.windows.net/default/social_account_registration.html -->
+<html lang="en" class="gr__woodgroveb2ctmpls_blob_core_windows_net">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Woodgrove</title>
+
+    @if (ViewBag.TabIcon != null)
+    {
+        <link rel="icon" href="@ViewBag.TabIcon" type="image/icon type">
+    }
+
+    <!-- inject:css -->
+    <style>
+    /*!
+ * Bootstrap Reboot v4.1.0 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
+ */
+
+        dl,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ol,
+        p,
+        pre,
+        ul { margin-top: 0 }
+
+        address,
+        dl,
+        ol,
+        p,
+        pre,
+        ul { margin-bottom: 1rem }
+
+        body,
+        caption { text-align: left }
+
+        button,
+        hr,
+        input { overflow: visible }
+
+        pre,
+        textarea { overflow: auto }
+
+        dd,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        label,
+        legend { margin-bottom: .5rem }
+
+        address,
+        legend { line-height: inherit }
+
+        progress,
+        sub,
+        sup { vertical-align: baseline }
+
+        label,
+        output { display: inline-block }
+
+        body,
+        html { height: 100% }
+
+        a,
+        a:hover {
+            color: #6cbf84;
+            text-decoration: none
+        }
+
+        button,
+        summary { cursor: pointer }
+
+        button,
+        img { vertical-align: middle }
+
+        button,
+        legend {
+            display: block;
+            white-space: normal
+        }
+
+        a,
+        a:hover,
+        button:focus,
+        button:hover { text-decoration: none }
+
+        .card,
+        sub,
+        sup { position: relative }
+
+        *,
+        ::after,
+        ::before { box-sizing: border-box }
+
+        html {
+            -ms-overflow-style: scrollbar;
+            -ms-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
+            font-family: sans-serif;
+            line-height: 1.15;
+        }
+
+        @@-ms-viewport { width: device-width }
+
+        article,
+        aside,
+        dialog,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        nav,
+        section { display: block }
+
+        body {
+            color: #212529;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        [tabindex="-1"]:focus { outline: 0 !important }
+
+        hr {
+            box-sizing: content-box;
+            height: 0
+        }
+
+        abbr[data-original-title],
+        abbr[title] {
+            -webkit-text-decoration: underline dotted;
+            border-bottom: 0;
+            cursor: help;
+            text-decoration: underline dotted;
+        }
+
+        address { font-style: normal }
+
+        ol ol,
+        ol ul,
+        ul ol,
+        ul ul { margin-bottom: 0 }
+
+        dt { font-weight: 700 }
+
+        dd { margin-left: 0 }
+
+        blockquote,
+        figure { margin: 0 0 1rem }
+
+        dfn { font-style: italic }
+
+        b,
+        strong { font-weight: bolder }
+
+        small { font-size: 80% }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0
+        }
+
+        sub { bottom: -.25em }
+
+        sup { top: -.5em }
+
+        a {
+            -webkit-text-decoration-skip: objects;
+            background-color: transparent;
+        }
+
+        a:not([href]):not([tabindex]),
+        a:not([href]):not([tabindex]):focus,
+        a:not([href]):not([tabindex]):hover {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:not([href]):not([tabindex]):focus { outline: 0 }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        pre { -ms-overflow-style: scrollbar }
+
+        img { border-style: none }
+
+        svg:not(:root) { overflow: hidden }
+
+        table { border-collapse: collapse }
+
+        caption {
+            caption-side: bottom;
+            color: #6c757d;
+            padding-bottom: .75rem;
+            padding-top: .75rem;
+        }
+
+        th { text-align: inherit }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0;
+        }
+
+        button,
+        select { text-transform: none }
+
+        [type=reset],
+        [type=submit],
+        button,
+        html [type=button] { -webkit-appearance: button }
+
+        [type=button]::-moz-focus-inner,
+        [type=reset]::-moz-focus-inner,
+        [type=submit]::-moz-focus-inner,
+        button::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+
+        input[type=checkbox],
+        input[type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        input[type=date],
+        input[type=datetime-local],
+        input[type=month],
+        input[type=time] { -webkit-appearance: listbox }
+
+        textarea { resize: vertical }
+
+        fieldset {
+            border: 0;
+            margin: 0;
+            min-width: 0;
+            padding: 0;
+        }
+
+        legend {
+            color: inherit;
+            font-size: 1.5rem;
+            max-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+
+        [type=number]::-webkit-inner-spin-button,
+        [type=number]::-webkit-outer-spin-button { height: auto }
+
+        [type=search] {
+            -webkit-appearance: none;
+            outline-offset: -2px;
+        }
+
+        [type=search]::-webkit-search-cancel-button,
+        [type=search]::-webkit-search-decoration { -webkit-appearance: none }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit;
+        }
+
+        .intro > p,
+        h2,
+        h3 { font-size: 1.25rem }
+
+        summary { display: list-item }
+
+        template { display: none }
+
+        [hidden] { display: none !important }
+
+        @@font-face {
+            font-family: Roboto;
+            font-weight: 200;
+            src: local(Roboto Thin), url(@ViewBag.BaseUrl/font/roboto/Roboto-Thin.eot);
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Thin.eot?#iefix) format("embedded-opentype"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Thin.woff2) format("woff2"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Thin.woff) format("woff"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Thin.ttf) format("truetype");
+        }
+
+        @@font-face {
+            font-family: Roboto;
+            font-weight: 300;
+            src: local(Roboto Light), url(@ViewBag.BaseUrl/font/roboto/Roboto-Light.eot);
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Light.eot?#iefix) format("embedded-opentype"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Light.woff2) format("woff2"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Light.woff) format("woff"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Light.ttf) format("truetype");
+        }
+
+        @@font-face {
+            font-family: Roboto;
+            font-weight: 400;
+            src: local(Roboto Regular), url(@ViewBag.BaseUrl/font/roboto/Roboto-Regular.eot);
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Regular.eot?#iefix) format("embedded-opentype"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Regular.woff2) format("woff2"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Regular.woff) format("woff"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Regular.ttf) format("truetype");
+        }
+
+        @@font-face {
+            font-family: Roboto;
+            font-weight: 500;
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Medium.eot);
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Medium.eot?#iefix) format("embedded-opentype"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Medium.woff2) format("woff2"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Medium.woff) format("woff"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Medium.ttf) format("truetype");
+        }
+
+        @@font-face {
+            font-family: Roboto;
+            font-weight: 700;
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Bold.eot);
+            src: url(@ViewBag.BaseUrl/font/roboto/Roboto-Bold.eot?#iefix) format("embedded-opentype"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Bold.woff2) format("woff2"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Bold.woff) format("woff"), url(@ViewBag.BaseUrl/font/roboto/Roboto-Bold.ttf) format("truetype");
+        }
+
+        body {
+            -ms-flex-align: center;
+            -ms-flex-pack: center;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            display: -webkit-box;
+            font-family: Roboto, sans-serif;
+            font-weight: 300;
+            justify-content: center;
+            padding-bottom: 40px;
+            padding-top: 40px
+        }
+
+        .card,
+        button {
+            background-color: #fff;
+            word-wrap: break-word
+        }
+
+        main {
+            margin: auto;
+            max-width: 420px;
+            padding: 15px;
+            width: 100%
+        }
+
+        .intro > p,
+        h2,
+        h3 {
+            font-weight: 500;
+            line-height: 1.25;
+            margin-bottom: 1.5rem !important;
+            text-align: center !important
+        }
+
+        .card,
+        .card-header h3,
+        button { font-weight: 400 }
+
+        button {
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-transition: all .2s ease-in-out;
+            -webkit-border-radius: 10rem;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            -webkit-transition: all .2s ease-in-out;
+            -webkit-user-select: none;
+            border: 0;
+            border-radius: 10rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            color: #323339;
+            font-size: .81rem;
+            line-height: 1.5;
+            padding: .84rem 2.14rem;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all .2s ease-in-out;
+            user-select: none;
+            width: 100% !important
+        }
+
+        button:active,
+        button:focus,
+        button:hover {
+            -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+            outline: 0
+        }
+
+        button:disabled { opacity: .65 }
+
+        .card {
+            -ms-flex-direction: column;
+            -webkit-box-direction: normal;
+            -webkit-box-orient: vertical;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            background-clip: border-box;
+            border: 0;
+            border-radius: .25rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            display: -webkit-box;
+            flex-direction: column;
+            min-width: 0
+        }
+
+        .card-body {
+            -ms-flex: 1 1 auto;
+            -webkit-box-flex: 1;
+            flex: 1 1 auto;
+            padding: 20px;
+        }
+
+        .card-header {
+            -webkit-border-radius: 10rem !important;
+            -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+            background-color: #323339;
+            border-radius: 10rem !important;
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+            color: #fff;
+            margin-bottom: 1.5rem;
+            margin-top: -3.5rem;
+            padding: 1rem;
+            text-align: center
+        }
+
+        .card-header h3 {
+            color: #fff !important;
+            font-size: 1.5rem;
+            margin-bottom: 0 !important;
+            padding: 0
+        }
+
+        :-moz-placeholder { color: transparent }
+
+        :-ms-input-placeholder { color: transparent }
+
+        ::-moz-placeholder { color: transparent }
+
+        ::-ms-input-placeholder { color: transparent }
+
+        ::-webkit-input-placeholder { color: transparent }
+
+        .attrEntry,
+        .entry-item {
+            margin-top: 1.5rem;
+            position: relative
+        }
+
+        .attrEntry input,
+        .attrEntry select,
+        .entry-item input {
+            -webkit-border-radius: 0;
+            background-clip: padding-box;
+            background-color: transparent;
+            background-image: none;
+            border: 1px solid #ced4da;
+            border-radius: 0;
+            color: #495057;
+            display: block;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 0 .5rem;
+            padding: .3rem 0 .55rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            width: 100% !important
+        }
+
+        .attrEntry input:focus,
+        .attrEntry select:focus,
+        .entry-item input:focus {
+            -webkit-box-shadow: none;
+            background: #fff;
+            border-color: #6cbf84;
+            box-shadow: none;
+            color: #495057;
+            outline: 0
+        }
+
+        .attrEntry input[type=checkbox] {
+            opacity: 0;
+            position: absolute;
+            z-index: -1
+        }
+
+        .attrEntry input[type=checkbox] + label { display: inline-block !important }
+
+        .attrEntry input[type=checkbox] + label:before {
+            -o-transition: .2s;
+            -webkit-border-radius: 1px;
+            -webkit-transition: .2s;
+            border: 1.5px solid #8a8a8a;
+            border-radius: 1px;
+            content: "";
+            height: 17px;
+            left: 0;
+            margin-top: 2px;
+            position: absolute;
+            top: 0;
+            transition: .2s;
+            width: 17px;
+            z-index: 0
+        }
+
+        .attrEntry input[type=checkbox]:checked + label:before {
+            -ms-transform: rotate(40deg);
+            -ms-transform-origin: 100% 100%;
+            -webkit-transform: rotate(40deg);
+            -webkit-transform-origin: 100% 100%;
+            border-color: transparent #6cbf84 #6cbf84 transparent;
+            border-style: solid;
+            border-width: 2px;
+            height: 22px;
+            left: -3px;
+            top: -4px;
+            transform: rotate(40deg);
+            transform-origin: 100% 100%;
+            width: 12px;
+        }
+
+        .working,
+        .working:before {
+            left: 0;
+            position: fixed;
+            top: 0
+        }
+
+        .attrEntry input[type=email],
+        .attrEntry input[type=password],
+        .attrEntry input[type=text],
+        .attrEntry select,
+        .entry-item input[type=email],
+        .entry-item input[type=password] {
+            -o-transition: all .3s;
+            -webkit-border-radius: 0;
+            -webkit-box-shadow: none;
+            -webkit-transition: all .3s;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #ced4da;
+            border-radius: 0;
+            box-shadow: none;
+            outline: 0;
+            transition: all .3s;
+        }
+
+        .attrEntry input[type=email]:focus,
+        .attrEntry input[type=password]:focus,
+        .attrEntry input[type=text]:focus,
+        .attrEntry select:focus,
+        .entry-item input[type=email]:focus,
+        .entry-item input[type=password]:focus {
+            -webkit-box-shadow: 0 1px 0 0 #6cbf84;
+            border-bottom: 1px solid #6cbf84;
+            box-shadow: 0 1px 0 0 #6cbf84;
+        }
+
+        .attrEntry input[type=email].highlightError,
+        .attrEntry input[type=password].highlightError,
+        .attrEntry input[type=text].highlightError,
+        .attrEntry select.highlightError,
+        .entry-item input[type=email].highlightError,
+        .entry-item input[type=password].highlightError {
+            -webkit-box-shadow: 0 1px 0 0 #f44336;
+            border-bottom: 1px solid #f44336;
+            box-shadow: 0 1px 0 0 #f44336;
+        }
+
+        .attrEntry label,
+        .entry-item label {
+            color: #757575;
+            font-size: .8em;
+            margin-bottom: 0
+        }
+
+        .error.pageLevel,
+        .errorText,
+        .verificationErrorText { color: #f44336 }
+
+        .attrEntry .error.itemLevel,
+        .attrEntry .helpText,
+        .attrEntry .tiny { display: none !important }
+
+        .attrEntry .error.itemLevel.show { display: block !important }
+
+        .divider { display: none !important }
+
+        .error.itemLevel {
+            color: #f44336;
+            font-size: .8rem
+        }
+
+        .error.itemLevel p { margin-bottom: 0 }
+
+        .errorText {
+            background: inherit;
+            border: inherit;
+            margin: inherit;
+            padding: inherit
+        }
+
+        #api ul {
+            list-style-type: none;
+            padding-left: 0
+        }
+
+        body {
+            background-attachment: fixed;
+            background-image: url(@Url.Action("Image", "B2CUI", new {imageId = ViewBag.Background}, Context.Request.Scheme));
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .verify {
+            margin-top: 5px;
+            padding-top: 0 !important
+        }
+
+        .working {
+            bottom: 0;
+            display: none;
+            height: 2em;
+            margin: auto;
+            overflow: show;
+            right: 0;
+            width: 2em;
+            z-index: 999
+        }
+
+        .working:before {
+            background-color: rgba(0, 0, 0, .3);
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%
+        }
+
+        .working:not(:required) {
+            background-color: transparent;
+            border: 0;
+            color: transparent;
+            font: 0/0 a;
+            text-shadow: none
+        }
+
+        #simplemodal-data.verifying-modal:before,
+        .working:not(:required):after {
+            border-radius: .5em;
+            content: '';
+            font-size: 10px;
+            width: 1em
+        }
+
+        .working:not(:required):after {
+            -moz-animation: spinner 1.5s infinite linear;
+            -ms-animation: spinner 1.5s infinite linear;
+            -o-animation: spinner 1.5s infinite linear;
+            -webkit-animation: spinner 1.5s infinite linear;
+            -webkit-box-shadow: rgba(0, 0, 0, .75) 1.5em 0 0 0, rgba(0, 0, 0, .75) 1.1em 1.1em 0 0, rgba(0, 0, 0, .75) 0 1.5em 0 0, rgba(0, 0, 0, .75) -1.1em 1.1em 0 0, rgba(0, 0, 0, .5) -1.5em 0 0 0, rgba(0, 0, 0, .5) -1.1em -1.1em 0 0, rgba(0, 0, 0, .75) 0 -1.5em 0 0, rgba(0, 0, 0, .75) 1.1em -1.1em 0 0;
+            animation: spinner 1.5s infinite linear;
+            box-shadow: rgba(0, 0, 0, .75) 1.5em 0 0 0, rgba(0, 0, 0, .75) 1.1em 1.1em 0 0, rgba(0, 0, 0, .75) 0 1.5em 0 0, rgba(0, 0, 0, .75) -1.1em 1.1em 0 0, rgba(0, 0, 0, .75) -1.5em 0 0 0, rgba(0, 0, 0, .75) -1.1em -1.1em 0 0, rgba(0, 0, 0, .75) 0 -1.5em 0 0, rgba(0, 0, 0, .75) 1.1em -1.1em 0 0;
+            display: block;
+            height: 1em;
+            margin-top: -.5em;
+        }
+
+        @@keyframes spinner {
+            0% {
+                -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                -o-transform: rotate(0);
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @@-moz-keyframes spinner {
+            0% {
+                -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                -o-transform: rotate(0);
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @@-o-keyframes spinner {
+            0% {
+                -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                -o-transform: rotate(0);
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @@-webkit-keyframes spinner {
+            0% {
+                -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                -o-transform: rotate(0);
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        #api .intro > p,
+        #api h2 { color: #323339 !important }
+
+        #simplemodal-data.verifying-modal {
+            height: 100%;
+            position: relative
+        }
+
+        #simplemodal-data.verifying-modal:before {
+            -moz-animation: spinner 1.5s infinite linear;
+            -ms-animation: spinner 1.5s infinite linear;
+            -o-animation: spinner 1.5s infinite linear;
+            -webkit-animation: spinner 1.5s infinite linear;
+            -webkit-box-shadow: rgba(0, 0, 0, .75) 1.5em 0 0 0, rgba(0, 0, 0, .75) 1.1em 1.1em 0 0, rgba(0, 0, 0, .75) 0 1.5em 0 0, rgba(0, 0, 0, .75) -1.1em 1.1em 0 0, rgba(0, 0, 0, .5) -1.5em 0 0 0, rgba(0, 0, 0, .5) -1.1em -1.1em 0 0, rgba(0, 0, 0, .75) 0 -1.5em 0 0, rgba(0, 0, 0, .75) 1.1em -1.1em 0 0;
+            animation: spinner 1.5s infinite linear;
+            box-shadow: rgba(0, 0, 0, .75) 1.5em 0 0 0, rgba(0, 0, 0, .75) 1.1em 1.1em 0 0, rgba(0, 0, 0, .75) 0 1.5em 0 0, rgba(0, 0, 0, .75) -1.1em 1.1em 0 0, rgba(0, 0, 0, .75) -1.5em 0 0 0, rgba(0, 0, 0, .75) -1.1em -1.1em 0 0, rgba(0, 0, 0, .75) 0 -1.5em 0 0, rgba(0, 0, 0, .75) 1.1em -1.1em 0 0;
+            display: inline-block;
+            height: 1em;
+            margin-top: 1em;
+            position: fixed;
+        }
+
+        #api[data-name=Unified] .buttons { margin-top: 1.5rem !important }
+
+        #api[data-name=Unified] .create,
+        #api[data-name=Unified] .localAccount {
+            border-top: 1px solid #e9ecef;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem
+        }
+
+        #api[data-name=Unified] .create > p {
+            -ms-flex-pack: end !important;
+            -webkit-box-pack: end !important;
+            color: #9e9e9e !important;
+            display: -webkit-box !important;
+            font-size: .9rem;
+            justify-content: flex-end !important;
+            margin-bottom: 0
+        }
+
+        #api[data-name=SelfAsserted] #continue,
+        #api[data-name=Unified] #next {
+            background-color: #6cbf84 !important;
+            color: #fff !important
+        }
+
+        #api[data-name=Unified] #createAccount { margin-left: .25rem }
+
+        #api[data-name=Unified] #forgotPassword {
+            float: right;
+            font-size: .8rem
+        }
+
+        #api[data-name=Unified] #GoogleAccountOAuth2Exchange,
+        #api[data-name=Unified] #GoogleExchange { margin-bottom: 1rem }
+
+        #api[data-name=Unified] #GoogleAccountOAuth2Exchange:before,
+        #api[data-name=Unified] #GoogleExchange:before {
+            content: url(@ViewBag.BaseUrl/images/google.png);
+            padding-right: .25rem
+        }
+
+        #api[data-name=Unified] #MicrosoftAccountExchange:before,
+        #api[data-name=Unified] #MicrosoftPersonalAccountOpenIdConnectExchange:before {
+            content: url(@ViewBag.BaseUrl/images/microsoft.png);
+            padding-right: .25rem
+        }
+
+        .self-asserted-container .card-footer {
+            border-top: 1px solid #e9ecef;
+            padding: 1rem
+        }
+
+        .self-asserted-container .card-footer .terms-of-service {
+            height: 100px;
+            overflow-y: scroll;
+            padding-right: .5rem;
+            width: 100%
+        }
+
+        .self-asserted-container .card-footer .terms-of-service p {
+            font-weight: 300;
+            margin-bottom: 0
+        }
+
+        #api[data-name=SelfAsserted] > .intro { display: none !important }
+
+        #api[data-name=SelfAsserted] #attributeVerification > .buttons {
+            border-top: 1px solid #e9ecef;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem
+        }
+
+        #api[data-name=SelfAsserted] #continue { margin-bottom: 1rem }
+
+        #api[data-name=SelfAsserted] #cancel,
+        #api[data-name=SelfAsserted] #email_ver_but_resend {
+            -webkit-box-shadow: none;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        #api[data-name=SelfAsserted] #email_ver_but_edit,
+        #api[data-name=SelfAsserted] #email_ver_but_send,
+        #api[data-name=SelfAsserted] #email_ver_but_verify { margin-top: .5rem }
+
+        #api[data-name=SelfAsserted] #email_ver_but_verify { margin-bottom: 1rem }
+
+        #api[data-name=SelfAsserted] #email_ver_input,
+        #api[data-name=SelfAsserted] #email_ver_input_label { margin-top: 2rem }
+
+        .local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div,
+        .local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(8) > div,
+        .local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div {
+            display: block;
+            margin-top: 1.5rem;
+            min-height: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative
+        }
+
+        .local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(1),
+        .local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(8) > div > label:nth-child(1),
+        .local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(1) { display: none !important }
+
+        .local-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(6),
+        .local-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(8) > div > label:nth-child(6),
+        .local-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(6) {
+            color: inherit;
+            font-size: inherit;
+            margin-bottom: 0;
+            position: static;
+            transform: inherit
+        }
+
+        .social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div,
+        .social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div,
+        .social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div {
+            display: block;
+            margin-top: 1.5rem;
+            min-height: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative
+        }
+
+        .social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(1),
+        .social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(1),
+        .social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(1) { display: none !important }
+
+        .social-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(4),
+        .social-account-registration-container-1 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(7) > div > label:nth-child(4),
+        .social-account-registration-container-2 #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(4) {
+            color: inherit;
+            font-size: inherit;
+            margin-bottom: 0;
+            position: static;
+            transform: inherit
+        }
+
+        .enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div {
+            display: block;
+            margin-top: 1.5rem;
+            min-height: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative
+        }
+
+        .enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(1) { display: none !important }
+
+        .enterprise-account-registration-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(6) > div > label:nth-child(6) {
+            color: inherit;
+            font-size: inherit;
+            margin-bottom: 0;
+            position: static;
+            transform: inherit
+        }
+
+        .account-profile-container #api[data-name=SelfAsserted] button {
+            -webkit-border-radius: 10rem;
+            border: 0;
+            border-radius: 10rem;
+            font-size: .8rem;
+            height: inherit;
+            margin: 0
+        }
+
+        .account-profile-container #api[data-name=SelfAsserted] #continue { margin-bottom: 1rem }
+
+        .account-terms-of-service-container .card-alert {
+            -webkit-border-radius: .25rem;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            border: 1px solid #ff3547 !important;
+            border-radius: .25rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            color: #ff3547;
+            padding: 1rem
+        }
+
+        .account-terms-of-service-container .card-alert p { margin-bottom: 0 }
+
+        .account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div {
+            display: block;
+            margin-top: 1.5rem;
+            min-height: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative
+        }
+
+        .account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div > label:nth-child(1) { display: none !important }
+
+        .account-terms-of-service-container #api[data-name=SelfAsserted] #attributeList > ul > li:nth-child(1) > div > label:nth-child(6) {
+            color: inherit;
+            font-size: inherit;
+            margin-bottom: 0;
+            position: static;
+            transform: inherit
+        }
+
+        .attrEntry #TermsAndCondition {
+            color: #212529;
+            font-family: Roboto, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            height: 100px;
+            line-height: 1.5;
+            overflow-y: scroll;
+            padding-right: .5rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .logo {
+            margin: 0 0 15px 0;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 60px !important;
+            width: auto !important;
+        }
+
+
+
+        #dateOfBirth_month {
+            float: left;
+            width: 35% !important;
+        }
+
+        #dateOfBirth_year { width: 35% !important; }
+
+        #dateOfBirth_day {
+            float: left;
+            width: 30% !important;
+        }
+
+        .verifying-modal { display: none; }
+    </style>
+    <!-- endinject -->
+
+</head>
+
+<body data-gr-c-s-loaded="true">
+<main>
+    <div class="container self-asserted-container account-registration-container social-account-registration-container">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    @if (ViewBag.Logo == null)
+                    {
+                        <div class="card-header">
+                            <h3>WoodGrove</h3>
+                        </div>
+                    }
+
+                    @if (ViewBag.Logo != null)
+                    {
+                        <div class="logo">
+                            <img src="@Url.Action("Image", "B2CUI", new {imageId = ViewBag.Logo}, Context.Request.Scheme)" alt="logo"/>
+                        </div>
+                    }
+
+                    <div id="api"></div>
+                </div>
+                <!-- <div class="card-footer">
+                    <div class="terms-of-service">
+                        <p><span style="font-size: 1.25rem; font-weight: 400;">WoodGrove terms of service</span></p>
+                        <p><span style="font-size: 1rem; font-weight: 400;">The standard Lorem Ipsum passage, used since the
+                            1500s </span></p>
+                        <p><span style="font-size: 0.75rem;"> "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </span></p>
+                        <p><span style="font-size: 0.75rem;">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by
+                            Cicero in 45 BC </span></p>
+                        <p><span style="font-size: 0.75rem;">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                            quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+                            nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                            velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                            nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate
+                            velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+                            pariatur?" </span></p>
+                        <p><span style="font-size: 0.75rem;">1914 translation by H. Rackham </span></p>
+                        <p><span style="font-size: 0.75rem;">"But I must explain to you how all this mistaken idea of denouncing
+                            pleasure and praising pain was born and I will give you a complete account of the system, and expound
+                            the actual teachings of the great explorer of the truth, the master-builder of human happiness. No
+                            one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+                            not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor
+                            again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
+                            but because occasionally circumstances occur in which toil and pain can procure him some great
+                            pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except
+                            to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy
+                            a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant
+                            pleasure?" </span></p>
+                        <p><span style="font-size: 0.75rem;">Section 1.10.33 of "de Finibus Bonorum et Malorum", written by
+                            Cicero in 45 BC</span></p>
+                        <p><span style="font-size: 0.75rem;">"At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                            blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
+                            sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                            id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero
+                            tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat
+                            facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et
+                            aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+                            molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+                            voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat." 1914
+                            translation by H. Rackham "On the other hand, we denounce with righteous indignation and dislike men
+                            who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire,
+                            that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to
+                            those who fail in their duty through weakness of will, which is the same as saying through shrinking
+                            from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when
+                            our power of choice is untrammelled and when nothing prevents our being able to do what we like best,
+                            every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to
+                            the claims of duty or the obligations of business it will frequently occur that pleasures have to be
+                            repudiated and annoyances accepted. The wise man therefore always holds in these matters to this
+                            principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures
+                            pains to avoid worse pains."</span></p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+
+</html>

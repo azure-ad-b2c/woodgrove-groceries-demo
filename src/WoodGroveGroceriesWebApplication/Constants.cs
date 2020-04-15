@@ -2,22 +2,47 @@
 {
     public static class Constants
     {
+        public static class AuthenticationType
+        {
+            public const string SignUp = "SignUp";
+
+            public const string SignIn = "SignIn";
+        }
+
         public static class AuthenticationProperties
         {
             public const string Policy = "p";
 
             public const string UILocales = "ui_locales";
+
+            public const string BgImage = "bkg";
+
+            public const string LogoImage = "logo";
+
+            public const string InvitedEmail = "invitedEmail";
+
+            public const string InvitedAccountId = "invitedAccountId";
+
+            public const string InvitedGroupId = "invitedGroupId";
+
+            public const string IdTokenHint = "id_token_hint";
         }
 
         public static class AuthenticationSchemes
         {
-            public const string B2BOpenIdConnect = "B2BOpenIdConnect";
+            public const string BetaAccessOpenIdConnect = "BetaAccessOpenIdConnect";
 
-            public const string B2COpenIdConnect = "B2COpenIdConnect";
+            public const string PartnerOpenIdConnect = "PartnerOpenIdConnect";
+
+            public const string BusinessCustomerAuth = "BusinessCustomerAuth";
+
+            public const string CustomerAuth = "CustomerAuth";
         }
 
         public static class AuthorizationPolicies
         {
+            public const string BetaAppAccess = "BetaAppAccess";
+
             public const string AccessCatalog = "AccessCatalog";
 
             public const string AddToCatalog = "AddToCatalog";
@@ -31,6 +56,10 @@
             public const string RemoveFromPantry = "RemoveFromPantry";
 
             public const string AccessTrolley = "AccessTrolley";
+
+            public const string AccessCheckout = "AccessCheckout";
+
+            public const string ChangeUserRole = "ChangeUserRole";
         }
 
         public static class ClaimTypes
@@ -52,21 +81,12 @@
             public const string TenantIdentifier = "http://schemas.microsoft.com/identity/claims/tenantid";
 
             public const string TrustFrameworkPolicy = "tfp";
-        }
 
-        public static class Policies
-        {
-            public const string PasswordReset = "b2c_1_password_reset";
+            public const string LinkedSocialAccount = "LinkedSocialAccount";
 
-            public const string ProfileUpdateWithPersonalAccount = "b2c_1_profile_update_personal";
+            public const string Group = "Group";
 
-            public const string ProfileUpdateWithWorkAccount = "b2c_1a_profile_update_work";
-
-            public const string SignUpOrSignInWithPersonalAccount = "b2c_1_sign_up_sign_in_personal";
-
-            public const string SignUpOrSignInWithPersonalAccountUsingRewriteRules = "b2c_1a_sign_up_sign_in_personal_flight";
-
-            public const string SignUpOrSignInWithWorkAccount = "b2c_1a_sign_up_sign_in_work";
+            public const string NameIdentifier = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
         }
 
         public static class Roles
@@ -80,6 +100,27 @@
             public const string IndividualCustomer = "IndividualCustomer";
 
             public const string Partner = "Partner";
+        }
+
+        public static class DemoCookies
+        {
+            public const string BgImageKey = "BgImage";
+            public const string LogoImageKey = "LogoImage";
+            public const string DefaultSigninPolicyKey = "DefaultPolicy";
+            public const string IndustryKey = "Industry";
+            public const string UILocale = "UILocale";
+        }
+
+        public static class IdentityProvider
+        {
+            public const string Facebook = "facebook.com";
+        }
+
+        public class JsonResponse
+        {
+            public string state { get; set; }
+
+            public string response { get; set; }
         }
     }
 }

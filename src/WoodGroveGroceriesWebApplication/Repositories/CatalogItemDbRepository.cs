@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.EntityFramework;
-
-namespace WoodGroveGroceriesWebApplication.Repositories
+﻿namespace WoodGroveGroceriesWebApplication.Repositories
 {
+    using System;
+    using System.Threading.Tasks;
+    using Entities;
+    using EntityFramework;
+
     public class CatalogItemDbRepository : DbRepository<CatalogItem>, ICatalogItemRepository
     {
         public CatalogItemDbRepository(WoodGroveGroceriesDbContext dbContext)
@@ -16,10 +16,7 @@ namespace WoodGroveGroceriesWebApplication.Repositories
         {
             var catalogItem = new CatalogItem
             {
-                OwnerId = ownerId,
-                ProductId = Guid.NewGuid().ToString(),
-                ProductName = productName,
-                ProductPictureUrl = productPictureUrl
+                OwnerId = ownerId, ProductId = Guid.NewGuid().ToString(), ProductName = productName, ProductPictureUrl = productPictureUrl
             };
 
             return AddAsync(catalogItem);

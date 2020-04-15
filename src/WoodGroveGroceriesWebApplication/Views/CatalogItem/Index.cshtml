@@ -1,11 +1,36 @@
 ﻿@using WoodGroveGroceriesWebApplication.Extensions
+@using WoodGroveGroceriesWebApplication.Managers
 @model WoodGroveGroceriesWebApplication.ViewModels.CatalogItemIndexViewModel
 @{
     ViewBag.Title = "Catalog";
+    var industry = (IIndustry) ViewData["Industry"];
 }
-<main class="mt-3 pt-3">
+
+<style type="text/css">
+
+    .card-top {
+        height: 16rem;
+        position: relative;
+        text-align: center;
+    }
+
+    .card-img-top {
+        height: 100%;
+        object-fit: fill;
+        position: absolute !important;
+    }
+
+    .allergy-info {
+        left: 180px;
+        max-height: 60px;
+        max-width: 60px;
+        top: 15px;
+    }
+</style>
+
+<main class="">
     <nav class="mb-5 navbar navbar-dark navbar-expand-lg wg-black">
-        <a class="font-weight-bold mr-4 white-text" href="#">Catalog</a>
+        <a class="font-weight-bold mr-4 white-text" href="#">@industry.CatalogHeader</a>
         <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent1" data-toggle="collapse" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,15 +56,15 @@
                 </div>
                 <div class="form-group">
                     <input id="radio101" name="group100" type="radio">
-                    <label for="radio101" class="dark-grey-text">Bakery</label>
+                    <label for="radio101" class="dark-grey-text">@industry.CatalogItemsCategory1</label>
                 </div>
                 <div class="form-group">
                     <input id="radio103" name="group100" type="radio">
-                    <label for="radio103" class="dark-grey-text">Dairy & Eggs</label>
+                    <label for="radio103" class="dark-grey-text">@industry.CatalogItemsCategory2</label>
                 </div>
                 <div class="form-group">
                     <input id="radio104" name="group100" type="radio">
-                    <label for="radio104" class="dark-grey-text">Fruit & Vegetables</label>
+                    <label for="radio104" class="dark-grey-text">@industry.CatalogItemsCategory3</label>
                 </div>
             </div>
         </div>
@@ -50,16 +75,21 @@
                     {
                         <div class="col-lg-4 col-md-6 mb-4">
                             <form asp-area="@Model.FormAspArea" asp-controller="@Model.FormAspController" asp-action="@Model.FormAspAction" method="post">
-                                <input name="Id" type="hidden" asp-for="@item.Id" />
+                                <input name="Id" type="hidden" asp-for="@item.Id"/>
                                 <div class="card">
-                                    <div class="overlay view">
-                                        <img alt="" class="card-img-top" src="@item.ProductPictureUrl">
+                                    <div class="overlay view card-top">
+                                        <img alt="@item.ProductName" class="card-img-top" src="@item.ProductPictureUrl">
+                                        @if (User.IsAllergicTo(item.ProductAllergyInfo))
+                                        {
+                                            <img alt="allergy" class="allergy-info" src="@industry.CartAlertIndicator">
+                                        }
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title mb-1">@item.ProductName</h5>
                                         <div class="card-footer pb-0">
                                             <div class="mb-0 row">
-                                                <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit"><i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText</button>
+                                                <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit">
+                                                    <i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText</button>
                                             </div>
                                         </div>
                                     </div>

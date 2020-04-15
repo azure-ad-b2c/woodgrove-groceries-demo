@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq.Expressions;
-using WoodGroveGroceriesWebApplication.Entities;
-
-namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
+﻿namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
 {
+    using System;
+    using System.Linq.Expressions;
+    using Entities;
+
     public class SpecificationBase<TEntity> : ISpecification<TEntity>
         where TEntity : EntityBase
     {

@@ -1,7 +1,7 @@
-﻿using WoodGroveGroceriesWebApplication.Entities;
-
-namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
+﻿namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
 {
+    using Entities;
+
     public class PantryForOwnerSpecification : SpecificationBase<Pantry>
     {
         public PantryForOwnerSpecification(string ownerId)

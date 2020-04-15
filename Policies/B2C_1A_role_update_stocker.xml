@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+	PolicySchemaVersion="0.3.0.0"
+	TenantId="yourtenant.onmicrosoft.com" 
+	PolicyId="B2C_1A_profile_update_setrole_stocker"
+	PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_profile_update_setrole_stocker"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+
+  <BasePolicy>
+    <TenantId>yourtenant.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_ext</PolicyId>
+  </BasePolicy>
+
+  <ClaimsProviders>
+
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory Store</DisplayName>
+      <TechnicalProfiles>
+
+        <TechnicalProfile Id="AzureActiveDirectoryStore-WriteUserRoleByObjectId">
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" DefaultValue="Stocker" AlwaysUseDefaultValue="true" />
+          </PersistedClaims>
+          <IncludeTechnicalProfile ReferenceId="AzureActiveDirectoryStore-Common" />
+        </TechnicalProfile>
+
+      </TechnicalProfiles>
+
+    </ClaimsProvider>
+
+  </ClaimsProviders>
+
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="BusinessCustomer-ChangeRole" />
+    <UserJourneyBehaviors>
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey=" -- App Insights Instrumentation Key -- " DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      <ContentDefinitionParameters>
+        <Parameter Name="bkg">{OAUTH-KV:bkg}</Parameter>
+        <Parameter Name="logo">{OAUTH-KV:logo}</Parameter>
+      </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="RelyingParty-ProfileUpdateWithWorkAccount">
+      <DisplayName>Profile Update</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="jobTitle" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" />
+        <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" DefaultValue="{policy}" />
+        <OutputClaim ClaimTypeReferenceId="extension_BusinessCustomerRole" />
+        <OutputClaim ClaimTypeReferenceId="extension_OrganizationDisplayName" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>

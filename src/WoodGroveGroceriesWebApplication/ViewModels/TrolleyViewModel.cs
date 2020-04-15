@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace WoodGroveGroceriesWebApplication.ViewModels
+﻿namespace WoodGroveGroceriesWebApplication.ViewModels
 {
+    using System.Collections.Generic;
+
     public class TrolleyViewModel
     {
         public string Id { get; set; }

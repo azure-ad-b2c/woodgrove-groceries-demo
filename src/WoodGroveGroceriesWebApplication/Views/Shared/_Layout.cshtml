@@ -1,9 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using WoodGroveGroceriesWebApplication.Managers
+@{
+    var industry = (IIndustry) ViewData["Industry"];
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@ViewData["Title"] - WoodGrove Groceries</title>
+    <!--title>@industry.Title - @ViewData["Title"]</title-->
+    <title>Woodgrove</title>
+    <link rel="icon" href="/images/woodgrove-favicon.ico" type="image/icon type">
     <environment include="Development">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.css">
@@ -21,51 +27,49 @@
     </environment>
 </head>
 <body>
-    <header>
-        <nav class="fixed-top navbar navbar-light navbar-expand-lg white">
-            <div class="container">
-                <a class="font-weight-bold navbar-brand wg-black-text" asp-controller="Home" asp-action="Index">
-                    <strong>WoodGrove Groceries</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div id="navbarSupportedContent" class="collapse navbar-collapse">
-                    <ul class="mr-auto navbar-nav"></ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
+<header>
+    <nav class="fixed-top navbar navbar-light navbar-expand-lg white">
+        <div class="container">
+            <a class="font-weight-bold navbar-brand wg-black-text" asp-controller="Home" asp-action="Index">
+                <strong>@industry.Title</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="mr-auto navbar-nav"></ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
-        </nav>
-    </header>
-    <div class="container mt-5 pt-3">
-        @RenderBody()
-        <footer>
-            <p>&copy; 2018 - WoodGrove</p>
-        </footer>
-    </div>
-    <environment include="Development">
-        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.js"></script>
-        <script src="~/js/script.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                asp-fallback-src="https://code.jquery.com/jquery-3.2.1.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                asp-fallback-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.popper">
-        </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-                asp-fallback-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
-        <script src="~/js/script.min.js" asp-append-version="true"></script>
-    </environment>
-    @RenderSection("Scripts", required: false)
+        </div>
+    </nav>
+</header>
+<div class="container mt-5 pt-3">
+    @RenderBody()
+    <footer></footer>
+</div>
+<environment include="Development">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+</environment>
+<environment exclude="Development">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            asp-fallback-src="https://code.jquery.com/jquery-3.2.1.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            asp-fallback-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.popper">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            asp-fallback-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <script src="~/js/script.min.js" asp-append-version="true"></script>
+</environment>
+@RenderSection("Scripts", false)
 </body>
 </html>

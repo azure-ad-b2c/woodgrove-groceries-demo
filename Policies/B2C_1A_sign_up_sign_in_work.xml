@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
 	PolicySchemaVersion="0.3.0.0"
-	TenantId="woodgroveb2c.onmicrosoft.com"
+	TenantId="yourtenant.onmicrosoft.com" 
 	PolicyId="B2C_1A_sign_up_sign_in_work"
-	PublicPolicyUri="http://woodgroveb2c.onmicrosoft.com"
+	PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_sign_up_sign_in_work"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+
   <BasePolicy>
-    <TenantId>woodgroveb2c.onmicrosoft.com</TenantId>
+    <TenantId>yourtenant.onmicrosoft.com</TenantId>
     <PolicyId>B2C_1A_ext</PolicyId>
   </BasePolicy>
+
   <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignInWithWorkAccount" />
+    <DefaultUserJourney ReferenceId="BusinessCustomer-SignInSignUp" />
+    <UserJourneyBehaviors>
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey=" -- App Insights Instrumentation Key -- " DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      <ContentDefinitionParameters>
+        <Parameter Name="bkg">{OAUTH-KV:bkg}</Parameter>
+        <Parameter Name="logo">{OAUTH-KV:logo}</Parameter>
+      </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
     <TechnicalProfile Id="RelyingParty-SignUpOrSignInWithWorkAccount">
       <DisplayName>Sign Up Or Sign In</DisplayName>
       <Protocol Name="OpenIdConnect" />

@@ -1,0 +1,93 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+- develop
+- feature/*
+- prototype/*
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Debug'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(solution)'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+
+#Copy Policy Files
+- task: CopyFiles@2
+  inputs:
+    Contents: 'Policies/*.xml'
+    TargetFolder: $(Build.ArtifactStagingDirectory)
+    CleanTargetFolder: true
+    OverWrite: true
+
+- task: replacetokens@3
+  inputs:
+    targetFiles: '$(Build.ArtifactStagingDirectory)/Policies/*.xml'
+    encoding: 'auto'
+    escapeType: 'none'
+    writeBOM: false
+    actionOnMissing: 'continue'
+    keepToken: true
+    tokenPrefix: '{Settings:'
+    tokenSuffix: '}'
+
+#Copy UI Files
+#- task: CopyFiles@2
+#  inputs:
+#    Contents: 'UI/**'
+#    TargetFolder: $(Build.ArtifactStagingDirectory)
+#    CleanTargetFolder: false
+#    OverWrite: true
+
+
+#- task: NuGetCommand@2
+#  inputs:
+##    command: 'restore'
+#    restoreSolution: '**/*.sln'
+#    feedsToUse: 'select'
+#    vstsFeed: '867df00e-8729-4513-956d-82d775e9f652'
+
+#- task: VSBuild@1
+#  inputs:
+#    solution: '$(solution)'
+#    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)/webapp"'
+#    platform: '$(buildPlatform)'
+#    configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: "Publish"
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/webapp'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/webapp'
+    ArtifactName: 'webapp'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Policies'
+    ArtifactName: 'policies'
+    publishLocation: 'Container'

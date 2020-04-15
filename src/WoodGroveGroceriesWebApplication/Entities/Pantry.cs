@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace WoodGroveGroceriesWebApplication.Entities
+﻿namespace WoodGroveGroceriesWebApplication.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Pantry : EntityBase
     {
         private readonly List<PantryItem> _items = new List<PantryItem>();
@@ -21,11 +21,7 @@ namespace WoodGroveGroceriesWebApplication.Entities
                 return;
             }
 
-            var newItem = new PantryItem
-            {
-                Id = Guid.NewGuid().ToString(),
-                CatalogItemId = catalogItemId
-            };
+            var newItem = new PantryItem {Id = Guid.NewGuid().ToString(), CatalogItemId = catalogItemId};
 
             _items.Add(newItem);
         }

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Entities;
-using WoodGroveGroceriesWebApplication.Repositories.Specifications;
-
-namespace WoodGroveGroceriesWebApplication.Repositories
+﻿namespace WoodGroveGroceriesWebApplication.Repositories
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Entities;
+    using Specifications;
+
     public interface IRepository<TEntity>
         where TEntity : EntityBase
     {

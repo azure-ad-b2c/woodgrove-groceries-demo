@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace WoodGroveGroceriesWebApplication.Entities
+﻿namespace WoodGroveGroceriesWebApplication.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Trolley : EntityBase
     {
         private readonly List<TrolleyItem> _items = new List<TrolleyItem>();
@@ -22,12 +22,7 @@ namespace WoodGroveGroceriesWebApplication.Entities
                 return;
             }
 
-            var newItem = new TrolleyItem
-            {
-                Id = Guid.NewGuid().ToString(),
-                CatalogItemId = catalogItemId,
-                Quantity = quantity
-            };
+            var newItem = new TrolleyItem {Id = Guid.NewGuid().ToString(), CatalogItemId = catalogItemId, Quantity = quantity};
 
             _items.Add(newItem);
         }

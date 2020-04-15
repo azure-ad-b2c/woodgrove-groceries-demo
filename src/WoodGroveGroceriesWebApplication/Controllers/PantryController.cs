@@ -1,22 +1,23 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using WoodGroveGroceriesWebApplication.Extensions;
-using WoodGroveGroceriesWebApplication.Managers;
-using WoodGroveGroceriesWebApplication.ViewModels;
-using WoodGroveGroceriesWebApplication.ViewServices;
-
-namespace WoodGroveGroceriesWebApplication.Controllers
+﻿namespace WoodGroveGroceriesWebApplication.Controllers
 {
+    using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Managers;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+    using ViewServices;
+
     [Authorize(Policy = Constants.AuthorizationPolicies.AccessPantry)]
-    public class PantryController : Controller
+    public class PantryController : BaseController
     {
         private readonly IPantryManager _pantryManager;
         private readonly IPantryViewService _pantryViewService;
 
-        public PantryController(IPantryViewService pantryViewService, IPantryManager pantryManager)
+        public PantryController(IPantryViewService pantryViewService, IPantryManager pantryManager, IndustryManager industryManager) :
+            base(industryManager)
         {
             _pantryViewService = pantryViewService ?? throw new ArgumentNullException(nameof(pantryViewService));
             _pantryManager = pantryManager ?? throw new ArgumentNullException(nameof(pantryManager));
@@ -41,7 +42,7 @@ namespace WoodGroveGroceriesWebApplication.Controllers
                 FormAspController = userIsInBusinessAdministratorRole ? "Pantry" : "Trolley",
                 FormAspAction = userIsInBusinessAdministratorRole ? "RemoveFromPantry" : "AddFromPantryToTrolley",
                 FormSubmitButtonIconCssClass = userIsInBusinessAdministratorRole ? "fa fa-minus" : "fa fa-shopping-cart",
-                FormSubmitButtonText = userIsInBusinessAdministratorRole ? "Remove from pantry" : "Add to trolley",
+                FormSubmitButtonText = userIsInBusinessAdministratorRole ? "Remove from pantry" : "Add to cart",
                 Pantry = await GetPantryViewModelAsync()
             };
 

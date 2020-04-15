@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq.Expressions;
-using WoodGroveGroceriesWebApplication.Entities;
-
-namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
+﻿namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
 {
+    using Entities;
+
     public class CatalogItemForOwnerSpecification : SpecificationBase<CatalogItem>
     {
         public CatalogItemForOwnerSpecification(string ownerId)

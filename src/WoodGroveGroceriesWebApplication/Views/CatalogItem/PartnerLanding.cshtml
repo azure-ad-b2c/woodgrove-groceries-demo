@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "PartnerLanding";
+}
+@using WoodGroveGroceriesWebApplication.Extensions
+@using WoodGroveGroceriesWebApplication.Managers
+@model WoodGroveGroceriesWebApplication.ViewModels.CatalogItemIndexViewModel
+@{
+    ViewBag.Title = "Catalog";
+    var industry = (IIndustry) ViewData["Industry"];
+    var random = new Random();
+}
+
+
+<style type="text/css">
+
+    .card-top {
+        height: 16rem;
+        position: relative;
+        text-align: center;
+    }
+
+    .card-img-top {
+        height: 100%;
+        object-fit: fill;
+        position: absolute !important;
+    }
+
+    .allergy-info {
+        left: 180px;
+        max-height: 60px;
+        max-width: 60px;
+        top: 15px;
+    }
+
+    .smallimg {
+        height: 60px;
+        width: 60px;
+    }
+
+    td { vertical-align: middle !important; }
+
+</style>
+
+<main class="">
+    <nav class="mb-5 navbar navbar-dark navbar-expand-lg wg-black">
+        <a class="font-weight-bold mr-4 white-text" href="#">@industry.CatalogHeader</a>
+        <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent1" data-toggle="collapse" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent1" class="collapse navbar-collapse">
+            <ul class="mr-auto navbar-nav"></ul>
+            <form class="search-form" role="search">
+                <div class="form-group md-form my-0 waves-effect waves-light">
+                    <input class="form-control" placeholder="Search" type="text">
+                </div>
+            </form>
+        </div>
+    </nav>
+    <div class="pantry row">
+        <div class="col-lg-3">
+            <div class="col-md-6 col-lg-12 mb-5">
+                <h5 class="dark-grey-text font-weight-bold">
+                    <strong>Category</strong>
+                </h5>
+                <div class="divider"></div>
+                <div class="form-group ">
+                    <input id="radio100" name="group100" type="radio" checked="">
+                    <label for="radio100" class="dark-grey-text">All</label>
+                </div>
+                <div class="form-group">
+                    <input id="radio101" name="group100" type="radio">
+                    <label for="radio101" class="dark-grey-text">@industry.CatalogItemsCategory1</label>
+                </div>
+                <div class="form-group">
+                    <input id="radio103" name="group100" type="radio">
+                    <label for="radio103" class="dark-grey-text">@industry.CatalogItemsCategory2</label>
+                </div>
+                <div class="form-group">
+                    <input id="radio104" name="group100" type="radio">
+                    <label for="radio104" class="dark-grey-text">@industry.CatalogItemsCategory3</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <section class="section pt-4">
+                <div class="fadeIn mb-4 row wow" style="animation-name: fadeIn; visibility: visible;">
+                    @*@foreach (var item in Model.Items)
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <form asp-area="@Model.FormAspArea" asp-controller="@Model.FormAspController" asp-action="@Model.FormAspAction" method="post">
+                                <input name="Id" type="hidden" asp-for="@item.Id" />
+                                <div class="card">
+                                    <div class="overlay view card-top">
+                                        <img alt="@item.ProductName" class="card-img-top" src="@item.ProductPictureUrl">
+                                        @if (User.IsAllergicTo(item.ProductAllergyInfo))
+                                        {
+                                            <img alt="allergy" class="allergy-info" src="@industry.CartAlertIndicator">
+                                        }
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-1">@item.ProductName</h5>
+                                        <div class="card-footer pb-0">
+                                            <div class="mb-0 row">
+                                                <button class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" type="submit"><i class="@Model.FormSubmitButtonIconCssClass"></i> @Model.FormSubmitButtonText</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }*@
+                    <table class="table table-hover">
+                        <thead class="thead-default">
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Sales Data</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <img alt="@item.ProductName" class="smallimg" src="@item.ProductPictureUrl">
+                                </th>
+                                <td >@item.ProductName</td>
+                                <td >@random.Next(50)</td>
+                            </tr>
+                        }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            @if (User.IsInEmployeeRole() || User.IsInPartnerRole())
+            {
+                <div class="row justify-content-center mb-4">
+                    <button class="btn btn-wg-green btn-md btn-rounded" type="button" data-target="#newCatalogItemModal" data-toggle="modal"><i class="fa fa-plus"></i> Add to catalog</button>
+                </div>
+            }
+        </div>
+        <div id="newCatalogItemModal" class="fade modal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="newCatalogItemTitle">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form asp-controller="CatalogItem" asp-action="AddToCatalog" method="post">
+                        <div class="modal-header">
+                            <h5 id="newCatalogItemTitle" class="modal-title">Add to catalog</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="md-form mb-5">
+                                <input id="productNameInput" name="ProductName" class="form-control" type="text">
+                                <label for="productNameInput" class="active">Product name</label>
+                            </div>
+                            <div class="md-form mb-5">
+                                <input id="productPictureUrlInput" name="ProductPictureUrl" class="form-control" type="url">
+                                <label for="productPictureUrlInput" class="active">Product picture URL</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-link" type="button" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-wg-green btn-rounded" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

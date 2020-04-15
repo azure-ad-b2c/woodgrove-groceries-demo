@@ -1,51 +1,104 @@
-﻿@model WoodGroveGroceriesWebApplication.ViewModels.TrolleyIndexViewModel
+﻿@using WoodGroveGroceriesWebApplication.Extensions
+@using WoodGroveGroceriesWebApplication.Managers
+@model WoodGroveGroceriesWebApplication.ViewModels.TrolleyIndexViewModel
 @{
-    ViewBag.Title = "Trolley";
+    ViewBag.Title = "Cart";
+    var industry = (IIndustry) ViewData["Industry"];
 }
-<main class="mt-3 pt-3">
+
+<style type="text/css">
+
+    .allergy-info {
+        display: block;
+        left: 150px;
+        max-height: 60px;
+        max-width: 60px;
+        position: relative;
+        top: -150px;
+    }
+</style>
+
+
+<main class="">
     <section class="section mb-5 pb-5">
         <div class="table-responsive">
             <table class="table trolley-table">
-                <thead>
+                @if (Model.Trolley.Items != null && Model.Trolley.Items.Count > 0)
+                {
+                    <thead>
                     <tr>
                         <th></th>
                         <th class="font-weight-bold">
-                            <strong>Product</strong>
+                            <strong>@industry.TrolleyProductHeading</strong>
                         </th>
-                        <th class="font-weight-bold">
-                            <strong>Quantity</strong>
-                        </th>
-                        <th></th>
+                        @if (industry.ItemMultiPurchasable)
+                        {
+                            <th class="font-weight-bold">
+                                <strong>Quantity</strong>
+                            </th>
+                            <th></th>
+                        }
+
                     </tr>
-                </thead>
+                    </thead>
+                }
                 <tbody>
-                    @foreach (var item in Model.Trolley.Items)
+
+                @if (Model.Trolley.Items != null && Model.Trolley.Items.Count > 0)
+                {
+                    foreach (var item in Model.Trolley.Items)
                     {
                         <tr>
                             <th scope="row">
-                                <img alt="" class="img-fluid z-depth-0" src="@item.ProductPictureUrl">
+                                <img alt="@item.ProductName" class="img-fluid z-depth-0" src="@item.ProductPictureUrl">
+
+                                @if (User.IsAllergicTo(item.ProductAllergyInfo))
+                                {
+                                    <img alt="" class="allergy-info" src="@industry.CartAlertIndicator">
+                                }
                             </th>
                             <td>
                                 <h5 class="mt-3">
                                     <strong>@item.ProductName</strong>
                                 </h5>
                             </td>
-                            <td class="text-center text-md-left">
-                                <span class="qty">@item.Quantity</span>
-                            </td>
+                            @if (industry.ItemMultiPurchasable)
+                            {
+                                <td class="text-center text-md-left">
+                                    <span class="qty">@item.Quantity</span>
+                                </td>
+                            }
+
                             <td>
                                 <form asp-controller="Trolley" asp-action="RemoveFromTrolley" method="post">
-                                    <input name="Id" type="hidden" value="@item.Id" />
+                                    <input name="Id" type="hidden" value="@item.Id"/>
                                     <button class="btn btn-wg-green btn-rounded btn-sm waves-effect waves-light" title="" type="submit" data-original-title="Remove item" data-placement="top" data-toggle="tooltip">X</button>
                                 </form>
                             </td>
                         </tr>
                     }
+                }
+                else
+                {
                     <tr>
-                        <td colspan="4" class="text-center">
-                            <a class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" asp-controller="@Model.AspController" asp-action="Index">Continue shopping</a>
+                        <td class="text-center text-md-left" colspan="3">
+                            <h5 class="mt-3">
+                                @industry.TrolleyCartEmpty
+                            </h5>
                         </td>
                     </tr>
+                }
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <a class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" asp-controller="@Model.AspController" asp-action="Index">@industry.TrolleyContinueShopping</a>
+
+                        @if (Model.Trolley.Items.Count > 0)
+                        {
+                            <a class="btn btn-wg-green btn-md btn-rounded waves-effect waves-light" asp-controller="Account" asp-action="MFA">@industry.TrolleyCompletePurchase</a>
+                        }
+
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

@@ -1,15 +1,68 @@
 ﻿@using System.Security.Claims
 @using WoodGroveGroceriesWebApplication.Extensions
-@if (User.Identity.IsAuthenticated)
+@using WoodGroveGroceriesWebApplication.Managers
+@inject IdentityService IdentityService
+
+@{
+    var industry = (IIndustry)ViewData["Industry"];
+}
+
+<style type="text/css">
+    .login-dropdown-menu-picture {
+        height: 70px;
+        width: 70px;
+    }
+
+    .dropdown-menu .divider {
+        background-color: #e5e5e5;
+        height: 1px;
+        margin: 9px 0;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .dropdown-menu p {
+        margin: 0 0 5px 0;
+    }
+
+    .navbar-login {
+        padding: 10px;
+        padding-bottom: 0;
+        width: 305px;
+    }
+
+    .btn-success {
+        background-color: #6cbf84 !important;
+        border-color: #4cae4c !important;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #337ab7 !important;
+        border-color: #2e6da4 !important;
+        color: #fff;
+    }
+
+    .navbar .dropdown-menu a {
+        color: #FFF !important;
+        padding: 5px;
+    }
+
+    .login-dropdown-toggle-picture {
+        height: 18px;
+    }
+</style>
+
+@if (IdentityService.IsUserLoggedIn(User))
 {
     <ul class="navbar-nav">
         @if (User.IsInBusinessCustomerManagerRole() || User.IsInIndividualCustomerRole())
         {
             <li class="nav-item">
-                <a class="font-weight-bold nav-link" asp-controller="CatalogItem" asp-action="Index">Catalog</a>
+                <a class="font-weight-bold nav-link" asp-controller="CatalogItem" asp-action="Index">@industry.CatalogHeader</a>
             </li>
         }
-        @if (User.IsInBusinessCustomerManagerRole())
+        @if (User.IsInBusinessCustomerManagerRole() || User.IsInBusinessCustomerStockerRole())
         {
             <li class="nav-item ml-3">
                 @await Component.InvokeAsync("Pantry", User.FindFirstValue(Constants.ClaimTypes.TenantIdentifier))
@@ -23,15 +76,123 @@
         }
         <li class="dropdown ml-3 nav-item">
             <a id="navbarDropdownMenuLink-4" class="dropdown-toggle font-weight-bold nav-link waves-effect waves-light" data-toggle="dropdown" aria-expanded="true" aria-haspopup="true">
-                <i class="fa fa-user wg-black-text"></i> @User.Identity.Name - @User.GetRoleForDisplay()
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-4">
-                @if (User.IsInIndividualCustomerRole() || User.IsInBusinessCustomerManagerRole() || User.IsInBusinessCustomerStockerRole())
+                @if (User.HasIdentityProvider() && User.HasIdpAccessToken())
                 {
-                    <a class="dropdown-item waves-effect waves-light" asp-controller="Account" asp-action="EditProfile">Edit profile</a>
+                    <img alt="Picture" class="login-dropdown-toggle-picture" src="data:image/png;base64,@User.GetPictureUrl()" />
                 }
-                <a class="dropdown-item waves-effect waves-light" asp-controller="Account" asp-action="LogOut">Sign out</a>
-            </div>
+                else
+                {
+                    <i class="fa fa-user wg-black-text"></i>
+                }
+
+                @if (!User.HasGroup())
+                {
+                    <span>@User.Identity.Name - @User.GetRoleForDisplay(industry)</span>
+                }
+                else
+                {
+                    <span>@User.Identity.Name (@User.GetGroup()) - @User.GetRoleForDisplay(industry)</span>
+                }
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="navbar-login">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p class="text-center">
+                                    @if (User.HasIdentityProvider() && User.HasIdpAccessToken())
+                                    {
+                                        <img alt="Picture" class="login-dropdown-menu-picture" src="data:image/png;base64,@User.GetPictureUrl()" />
+                                    }
+                                    else
+                                    {
+                                        <img alt="Picture" class="login-dropdown-menu-picture" src="@Url.Content("~/images/user.png")" />
+                                    }
+                                </p>
+                            </div>
+
+                            <div class="col-lg-8">
+                                <p class="login-name text-left">
+                                    <strong>@User.Identity.Name</strong>
+                                </p>
+                                <p class="login-email text-left">
+                                    <small></small>
+                                </p>
+                                <p class="login-player-zone text-left">
+                                    <small>
+                                        <span class="badge"></span>
+                                    </small>
+                                </p>
+
+                                @if (User.IsInIndividualCustomerRole())
+                                {
+                                    <div class="progress" style="margin-bottom: 5px;">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: @User.GetUserProfilePercentage()%">
+                                            <span>@User.GetUserProfilePercentage()%</span>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (User.IsInIndividualCustomerRole() || User.IsInBusinessCustomerManagerRole() || User.IsInBusinessCustomerStockerRole())
+                                {
+                                    <p class="text-left">
+                                        <a class="btn btn-primary btn-block btn-sm" asp-controller="Account" asp-action="EditProfile">Edit profile</a>
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <div class="navbar-login navbar-login-session">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                @if (User.IsInBusinessCustomerManagerRole() )
+                                {
+                                    <p class="text-left">
+                                        <a class="btn btn-primary btn-block btn-sm" asp-controller="Account" asp-action="ChangeUserRole">Change to Stocker Role</a>
+                                    </p>
+                                }
+
+                                @if ( User.IsInBusinessCustomerStockerRole())
+                                {
+                                    <p class="text-left">
+                                        <a class="btn btn-primary btn-block btn-sm" asp-controller="Account" asp-action="ChangeUserRole">Change to Manager Role</a>
+                                    </p>
+                                }
+
+                                @if (User.IsInIndividualCustomerRole())
+                                {
+                                    <p class="text-left">
+                                        <a class="btn btn-primary btn-block btn-sm" asp-controller="Account" asp-action="InviteExternalUser">Invite External User</a>
+                                    </p>
+                                }
+
+                                @if (User.IsInIndividualCustomerRole() && !User.HasIdentityProvider() && !User.IsSocialAccountLinked())
+                                {
+                                    <p>
+                                        <a class="btn btn-success btn-block" asp-controller="Account" asp-action="LinkAccount">Link your social account</a>
+                                    </p>
+                                }
+
+                                @if (User.IsInIndividualCustomerRole())
+                                {
+                                    <p class="text-left">
+                                        <a class="btn btn-primary btn-block btn-sm" asp-controller="Account" asp-action="DeleteAccount">Forget Me</a>
+                                    </p>
+                                }
+
+                                <p>
+                                    <a class="btn btn-danger btn-block" asp-controller="Account" asp-action="LogOut">Log out</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            @*</div>*@
         </li>
     </ul>
 }
@@ -40,6 +201,10 @@ else
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="font-weight-bold nav-link" asp-controller="Account" asp-action="LogIn">Sign in</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-danger btn-block" asp-controller="Account" asp-action="LogOut">Beta Access Logout</a>
+            }
         </li>
     </ul>
 }

@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.ViewModels;
-
-namespace WoodGroveGroceriesWebApplication.ViewServices
+﻿namespace WoodGroveGroceriesWebApplication.ViewServices
 {
+    using System.Threading.Tasks;
+    using ViewModels;
+
     public interface ITrolleyViewService
     {
         Task<TrolleyViewModel> GetOrCreateTrolleyForOwnerAsync(string ownerId);

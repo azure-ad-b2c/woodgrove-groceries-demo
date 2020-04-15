@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq.Expressions;
-using WoodGroveGroceriesWebApplication.Entities;
-
-namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
+﻿namespace WoodGroveGroceriesWebApplication.Repositories.Specifications
 {
+    using Entities;
+
     public class AllCatalogItemsSpecification : SpecificationBase<CatalogItem>
     {
         public AllCatalogItemsSpecification()

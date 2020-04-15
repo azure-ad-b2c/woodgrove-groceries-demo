@@ -9,9 +9,7 @@ label {
     margin-bottom: 0;
 }
 
-select {
-    display: none !important;
-}
+select { display: none !important; }
 
 .btn-default {
     background-color: #ffffff !important;
@@ -25,13 +23,11 @@ select {
 }
 
 .btn-rounded {
+    -webkit-border-radius: 10em;
     border-radius: 10em;
-    -webkit-border-radius: 10em
 }
 
-.btn-wg-green {
-    background-color: #6cbf84;
-}
+.btn-wg-green { background-color: #6cbf84; }
 
 .card-footer {
     background-color: transparent;
@@ -39,41 +35,37 @@ select {
 }
 
 .divider {
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0, 0, 0, .1);
     display: block;
     height: 3px;
     margin: 1em 0;
     width: 30px
 }
 
-.dropdown .dropdown-menu {
+.dropdown .dropdown-menu { padding: 0.5rem }
+
+.dropdown .dropdown-menu .dropdown-item {
+    font-size: 0.9rem;
+    margin-left: 0;
     padding: 0.5rem
 }
 
-    .dropdown .dropdown-menu .dropdown-item {
-        font-size: 0.9rem;
-        margin-left: 0;
-        padding: 0.5rem
-    }
+.dropdown .dropdown-menu .dropdown-item:hover { color: #fff !important }
 
-        .dropdown .dropdown-menu .dropdown-item:hover {
-            color: #fff !important
-        }
-
-        .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
-            background-color: #4285f4;
-            border-radius: 0.125rem;
-            box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-            -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-            -webkit-border-radius: 0.125rem;
-            transition: all 0.1s linear;
-            -o-transition: all 0.1s linear;
-            -webkit-transition: all 0.1s linear
-        }
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+    -o-transition: all 0.1s linear;
+    -webkit-border-radius: 0.125rem;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    -webkit-transition: all 0.1s linear;
+    background-color: #4285f4;
+    border-radius: 0.125rem;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    transition: all 0.1s linear;
+}
 
 .dropdown-content {
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 }
 
 .dropdown-content {
@@ -85,31 +77,29 @@ select {
     opacity: 0;
     overflow-y: auto;
     position: absolute;
-    will-change: width,height;
+    will-change: width, height;
     z-index: 999;
 }
 
-    .dropdown-content li {
-        clear: both;
-        color: #000;
-        cursor: pointer;
-        line-height: 1.3rem;
-        text-align: left;
-        text-transform: none;
-        width: 100%;
-    }
-
-        .dropdown-content li > a,
-        .dropdown-content li > span {
-            color: #4285f4;
-            display: block;
-            font-size: .9rem;
-            padding: .5rem;
-        }
-
-.dropdown-wg-green {
-    background-color: #6cbf84;
+.dropdown-content li {
+    clear: both;
+    color: #000;
+    cursor: pointer;
+    line-height: 1.3rem;
+    text-align: left;
+    text-transform: none;
+    width: 100%;
 }
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+    color: #4285f4;
+    display: block;
+    font-size: .9rem;
+    padding: .5rem;
+}
+
+.dropdown-wg-green { background-color: #6cbf84; }
 
 .home .badge-pill {
     background-color: transparent !important;
@@ -117,9 +107,15 @@ select {
     font-weight: 400
 }
 
-.home #intro {
-    background-image: url(https://woodgrovegroceriesb2c.blob.core.windows.net/images/background.jpg);
+.text-white {
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 1px black;
+    color: white;
 }
+
+/*.home #intro {
+    background-image: url('../images/background.jpg');
+}*/
 
 .md-form input[type=date]:focus:not([readonly]),
 .md-form input[type=datetime-local]:focus:not([readonly]),
@@ -133,80 +129,72 @@ select {
 .md-form input[type=time]:focus:not([readonly]),
 .md-form input[type=url]:focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
-    box-shadow: 0 1px 0 0 #6cbf84;
     border-bottom: 1px solid #6cbf84;
+    box-shadow: 0 1px 0 0 #6cbf84;
 }
 
-.navbar .navbar-nav .nav-item .dropdown-menu a:hover {
-    background-color: #6cbf84;
-}
+.navbar .navbar-nav .nav-item .dropdown-menu a:hover { background-color: #6cbf84; }
 
-.pantry [type=radio] + label {
-    font-size: 0.9rem
-}
+.pantry [type=radio] + label { font-size: 0.9rem }
 
 .rating {
     list-style-type: none;
     padding: 0
 }
 
-    .rating li {
-        display: inline-block
-    }
+.rating li { display: inline-block }
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
 .select-dropdown li.optgroup {
     background-color: transparent !important;
-    color: rgba(0,0,0,.3);
+    color: rgba(0, 0, 0, .3);
     cursor: context-menu;
 }
 
-.select-wrapper {
-    position: relative;
+.select-wrapper { position: relative; }
+
+.select-wrapper + label {
+    font-size: .8rem;
+    position: absolute;
+    top: -.88rem;
 }
 
-    .select-wrapper + label {
-        font-size: .8rem;
-        position: absolute;
-        top: -.88rem;
-    }
+.select-wrapper input.select-dropdown {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    height: 2.9rem;
+    line-height: 2.9rem;
+    margin: 0 0 .94rem;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
 
-    .select-wrapper input.select-dropdown {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #ced4da;
-        cursor: pointer;
-        display: block;
-        font-size: 1rem;
-        height: 2.9rem;
-        line-height: 2.9rem;
-        margin: 0 0 .94rem;
-        outline: 0;
-        padding: 0;
-        position: relative;
-        width: 100%;
-    }
+.select-wrapper span.caret {
+    color: initial;
+    font-size: .63rem;
+    position: absolute;
+    right: 0;
+    top: 1rem;
+}
 
-    .select-wrapper span.caret {
-        color: initial;
-        font-size: .63rem;
-        position: absolute;
-        right: 0;
-        top: 1rem;
-    }
+.select-wrapper ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 
-    .select-wrapper ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    .select-wrapper .select-dropdown {
-        user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-    }
+.select-wrapper .select-dropdown {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
 
 .trolley-table img {
     max-height: 150px;
@@ -218,18 +206,15 @@ select {
     vertical-align: middle
 }
 
-.trolley-table .btn.btn-sm {
-    padding: 0.3rem 0.6rem
-}
+.trolley-table .btn.btn-sm { padding: 0.3rem 0.6rem }
 
-.wg-black {
-    background-color: #323339;
-}
+.wg-black { background-color: #323339; }
 
-.wg-black-text {
-    color: #323339;
-}
+.wg-black-text { color: #323339; }
 
-.wg-green {
-    background-color: #6cbf84;
-}
+.wg-green { background-color: #6cbf84; }
+
+
+/*Custom Style*/
+
+.mt-10 { margin-top: 7rem !important; }

@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-
-namespace WoodGroveGroceriesWebApplication.Managers
+﻿namespace WoodGroveGroceriesWebApplication.Managers
 {
+    using System.Threading.Tasks;
+
     public interface IPantryManager
     {
         Task AddToPantryAsync(string id, string catalogItemId);

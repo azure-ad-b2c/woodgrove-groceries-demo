@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using WoodGroveGroceriesWebApplication.Repositories;
-
-namespace WoodGroveGroceriesWebApplication.Managers
+﻿namespace WoodGroveGroceriesWebApplication.Managers
 {
+    using System;
+    using System.Threading.Tasks;
+    using Repositories;
+
     public class CatalogItemManager : ICatalogItemManager
     {
         private readonly ICatalogItemRepository _catalogItemRepository;
